@@ -1,19 +1,25 @@
-echo "compiling"
+tput bold
+echo "compiling..."
 
 cd src/
 
 javac Comando.java Attrezzo.java Stanza.java Partita.java DiaDia.java
 
-echo "compiled"
+echo "compiled!"
 
-echo "running"
+echo "running:"
+echo -e "\n\n"
+
+tput sgr0
 
 java DiaDia
 
-echo "removing objects"
+tput bold
+echo -e "\n\n"
+echo "removing objects.."
 
 rm *.class
 
-echo "done"
-
+echo "done!"
+tput sgr0
 
