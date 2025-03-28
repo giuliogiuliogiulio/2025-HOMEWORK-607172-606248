@@ -26,7 +26,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+    static final private String[] elencoComandi = {"vai", "aiuto", "prendi", "fine"};
 
 	private Partita partita;
 
@@ -101,7 +101,6 @@ public class DiaDia {
 	} else {
 	    System.out.println(nomeAttrezzo + " non e' presente nella stanza!");
 	}
-
     }
 
 	/**
