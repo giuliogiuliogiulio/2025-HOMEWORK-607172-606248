@@ -26,7 +26,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-    static final private String[] elencoComandi = {"vai", "aiuto", "prendi", "fine"};
+    static final private String[] elencoComandi = {"vai", "aiuto", "prendi", "posa", "fine"};
 
 	private Partita partita;
 
@@ -63,6 +63,8 @@ public class DiaDia {
 	    this.aiuto();
 	else if (comandoDaEseguire.getNome().equals("prendi"))
 	    this.prendi(comandoDaEseguire.getParametro());
+	else if (comandoDaEseguire.getNome().equals("posa"))
+	    this.posa(comandoDaEseguire.getParametro());
 	else
 	    System.out.println("Comando sconosciuto");
 	if (this.partita.isFinita()) {
@@ -100,6 +102,24 @@ public class DiaDia {
 	    curr.removeAttrezzo(a);
 	} else {
 	    System.out.println(nomeAttrezzo + " non e' presente nella stanza!");
+	}
+    }
+
+    private void posa(String nomeAttrezzo) {
+	if (nomeAttrezzo == null) {
+	    System.out.println("Posare cosa?");
+	    return;
+	}
+
+	Stanza curr = this.partita.getStanzaCorrente();
+	Giocatore g = this.partita.getGiocatore();
+
+	if (g.getBorsa().hasAttrezzo(nomeAttrezzo)) {
+	    Attrezzo a = g.getBorsa().getAttrezzo(nomeAttrezzo);
+	    curr.addAttrezzo(a);
+	    g.getBorsa().removeAttrezzo(nomeAttrezzo);
+	} else {
+	    System.out.println(nomeAttrezzo + " non e' presente nella tua borsa!");
 	}
     }
 
