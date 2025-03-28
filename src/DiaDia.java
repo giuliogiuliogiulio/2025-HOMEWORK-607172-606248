@@ -51,24 +51,26 @@ public class DiaDia {
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
-	private boolean processaIstruzione(String istruzione) {
-		Comando comandoDaEseguire = new Comando(istruzione);
+    private boolean processaIstruzione(String istruzione) {
+	Comando comandoDaEseguire = new Comando(istruzione);
 
-		if (comandoDaEseguire.getNome().equals("fine")) {
-			this.fine(); 
-			return true;
-		} else if (comandoDaEseguire.getNome().equals("vai"))
-			this.vai(comandoDaEseguire.getParametro());
-		else if (comandoDaEseguire.getNome().equals("aiuto"))
-			this.aiuto();
-		else
-			System.out.println("Comando sconosciuto");
-		if (this.partita.vinta()) {
-			System.out.println("Hai vinto!");
-			return true;
-		} else
-			return false;
-	}   
+	if (comandoDaEseguire.getNome().equals("fine")) {
+	    this.fine(); 
+	    return true;
+	} else if (comandoDaEseguire.getNome().equals("vai"))
+	    this.vai(comandoDaEseguire.getParametro());
+	else if (comandoDaEseguire.getNome().equals("aiuto"))
+	    this.aiuto();
+	else
+	    System.out.println("Comando sconosciuto");
+	if (this.partita.isFinita()) {
+	    if (this.partita.vinta()) {
+		System.out.println("Hai vinto!");
+	    }
+	    return true;
+	}
+	return false;
+    }   
 
 	// implementazioni dei comandi dell'utente:
 
