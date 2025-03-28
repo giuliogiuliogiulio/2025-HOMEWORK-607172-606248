@@ -61,6 +61,8 @@ public class DiaDia {
 	    this.vai(comandoDaEseguire.getParametro());
 	else if (comandoDaEseguire.getNome().equals("aiuto"))
 	    this.aiuto();
+	else if (comandoDaEseguire.getNome().equals("prendi"))
+	    this.prendi(comandoDaEseguire.getParametro());
 	else
 	    System.out.println("Comando sconosciuto");
 	if (this.partita.isFinita()) {
@@ -82,6 +84,25 @@ public class DiaDia {
 			System.out.print(elencoComandi[i]+" ");
 		System.out.println();
 	}
+
+    private void prendi(String nomeAttrezzo){
+	if (nomeAttrezzo == null) {
+	    System.out.println("Prendere cosa??");
+	    return;
+	}
+	
+	Stanza curr = this.partita.getStanzaCorrente();
+	Giocatore g = this.partita.getGiocatore();
+
+	if (curr.hasAttrezzo(nomeAttrezzo)) {
+	    Attrezzo a = curr.getAttrezzo(nomeAttrezzo);
+	    g.getBorsa().addAttrezzo(a);
+	    curr.removeAttrezzo(a);
+	} else {
+	    System.out.println(nomeAttrezzo + " non e' presente nella stanza!");
+	}
+
+    }
 
 	/**
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
