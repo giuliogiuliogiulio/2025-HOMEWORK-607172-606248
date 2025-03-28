@@ -1,7 +1,3 @@
-
-
-
-
 /**
  * Classe Stanza - una stanza in un gioco di ruolo.
  * Una stanza e' un luogo fisico nel gioco.
@@ -15,10 +11,10 @@
 
 public class Stanza {
 	
-	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
-	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
+    static final private int NUMERO_MASSIMO_DIREZIONI = 4;
+    static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 	
-	private String nome;
+    private String nome;
 	
     private Attrezzo[] attrezzi;
     private int numeroAttrezzi;
@@ -26,7 +22,7 @@ public class Stanza {
     private Stanza[] stanzeAdiacenti;
     private int numeroStanzeAdiacenti;
     
-	private String[] direzioni;
+    private String[] direzioni;
     
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -170,8 +166,23 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		// TODO da implementare
+	    if (attrezzo != null && this.hasAttrezzo(attrezzo.getNome())) {
+		String nome = attrezzo.getNome();
+		boolean found = false;
+		for (int i=0; i<this.numeroAttrezzi; i++) {
+		    if (this.attrezzi[i].getNome().equals(nome)) {
+			for (int j=i; j<this.numeroAttrezzi; j++) {
+			    this.attrezzi[j] = this.attrezzi[j+1];
+			}
+			// posso uscire dal for, ho rimosso l'attrezzo e
+			// spostato il resto dell'array
+			break;
+		    }
+		}
+		return true;
+	    } else {
 		return false;
+	    }
 	}
 
 
