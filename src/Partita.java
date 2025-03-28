@@ -95,6 +95,10 @@ public class Partita {
 		this.finita = true;
 	}
 
+    public String toString() {
+	return this.getStanzaCorrente().getDescrizione() + "\nCfu = " + this.getGiocatore().getCfu();
+    }
+
     public Giocatore getGiocatore() {
 	return this.giocatore;
     }
