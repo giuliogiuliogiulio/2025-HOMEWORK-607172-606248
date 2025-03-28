@@ -171,6 +171,7 @@ public class Stanza {
 		boolean found = false;
 		for (int i=0; i<this.numeroAttrezzi; i++) {
 		    if (this.attrezzi[i].getNome().equals(nome)) {
+			numeroAttrezzi--;
 			for (int j=i; j<this.numeroAttrezzi; j++) {
 			    this.attrezzi[j] = this.attrezzi[j+1];
 			}
