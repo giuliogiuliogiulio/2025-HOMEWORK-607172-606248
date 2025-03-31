@@ -1,7 +1,3 @@
-
-
-
-
 /**
  * Una semplice classe che modella un attrezzo.
  * Gli attrezzi possono trovarsi all'interno delle stanze
@@ -12,6 +8,9 @@
  * @see Stanza
  * @version base
  */
+
+package it.uniroma3.diadia.attrezzi;
+
 public class Attrezzo {
 
 	private String nome;

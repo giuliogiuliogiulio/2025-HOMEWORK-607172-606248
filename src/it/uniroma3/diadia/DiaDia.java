@@ -1,6 +1,10 @@
-
+package it.uniroma3.diadia;
 
 import java.util.Scanner;
+
+import it.uniroma3.diadia.giocatore.Giocatore;
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
