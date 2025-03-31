@@ -1,26 +1,47 @@
+set --path OUT out/
+
 function done-message
     echo (set_color -o green)"done!"(set_color normal)
 end
 
 function compile
     echo "Compiling java source code..."
-    mkdir -p out
-    javac -d out src/**/*.java
+    javac -d $OUT src/**/*.java
     done-message
 end
 
 function run
     echo "Running program..."
-    java -cp out it.uniroma3.diadia.DiaDia
+    java -cp $OUT it.uniroma3.diadia.DiaDia
     done-message
 end
 
 function clean
     echo "Cleaning object files and deps..."
-    rm -rf out/
+    rm -rf $OUT
     done-message
 end
 
-compile
-run
+function tests
+    echo "Downloading junit 5..."
+    # https://junit.org/junit5/docs/current/user-guide/#running-tests-console-launcher
+    wget -q "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.9.3/junit-platform-console-standalone-1.9.3.jar" -P $OUT
+    done-message
+    echo "Executing Tests..."
+    java -cp $OUT/* org.junit.platform.console.ConsoleLauncher -h # only prints version
+    done-message
+end
+
+mkdir -p $OUT
+
+switch $argv[1]
+    case "run"
+	compile
+	run
+    case "test"
+	tests
+    case '*'
+	echo (set_color -o red)"Either 'run' or 'test'"(set_color normal)
+end
+
 clean
