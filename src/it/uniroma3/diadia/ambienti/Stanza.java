@@ -1,3 +1,6 @@
+package it.uniroma3.diadia.ambienti;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+
 /**
  * Classe Stanza - una stanza in un gioco di ruolo.
  * Una stanza e' un luogo fisico nel gioco.
@@ -8,10 +11,6 @@
  * @see Attrezzo
  * @version base
 */
-
-package it.uniroma3.diadia.ambienti;
-
-import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Stanza {
 	
@@ -172,13 +171,13 @@ public class Stanza {
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
 	    if (attrezzo != null && this.hasAttrezzo(attrezzo.getNome())) {
 		String nome = attrezzo.getNome();
-		boolean found = false;
+		//boolean found = false;
 		for (int i=0; i<this.numeroAttrezzi; i++) {
 		    if (this.attrezzi[i].getNome().equals(nome)) {
 			numeroAttrezzi--;
-			for (int j=i; j<this.numeroAttrezzi; j++) {
-			    this.attrezzi[j] = this.attrezzi[j+1];
-			}
+				for (int j=i; j<this.numeroAttrezzi; j++) {
+				    this.attrezzi[j] = this.attrezzi[j+1];
+				}
 			// posso uscire dal for, ho rimosso l'attrezzo e
 			// spostato il resto dell'array
 			break;

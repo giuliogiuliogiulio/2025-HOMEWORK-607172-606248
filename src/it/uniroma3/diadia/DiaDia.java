@@ -2,9 +2,11 @@ package it.uniroma3.diadia;
 
 import java.util.Scanner;
 
-import it.uniroma3.diadia.giocatore.Giocatore;
 import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
+
+import it.uniroma3.diadia.attrezzi.*;
+
+import it.uniroma3.diadia.giocatore.*;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -47,6 +49,7 @@ public class DiaDia {
 		do		
 			istruzione = scannerDiLinee.nextLine();
 		while (!processaIstruzione(istruzione));
+		scannerDiLinee.close();
 	}   
 
 
@@ -56,28 +59,28 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
     private boolean processaIstruzione(String istruzione) {
-	Comando comandoDaEseguire = new Comando(istruzione);
-
-	if (comandoDaEseguire.getNome().equals("fine")) {
-	    this.fine(); 
-	    return true;
-	} else if (comandoDaEseguire.getNome().equals("vai"))
-	    this.vai(comandoDaEseguire.getParametro());
-	else if (comandoDaEseguire.getNome().equals("aiuto"))
-	    this.aiuto();
-	else if (comandoDaEseguire.getNome().equals("prendi"))
-	    this.prendi(comandoDaEseguire.getParametro());
-	else if (comandoDaEseguire.getNome().equals("posa"))
-	    this.posa(comandoDaEseguire.getParametro());
-	else
-	    System.out.println("Comando sconosciuto");
-	if (this.partita.isFinita()) {
-	    if (this.partita.vinta()) {
-		System.out.println("Hai vinto!");
-	    }
-	    return true;
-	}
-	return false;
+		Comando comandoDaEseguire = new Comando(istruzione);
+	
+		if (comandoDaEseguire.getNome().equals("fine")) {
+		    this.fine(); 
+		    return true;
+		} else if (comandoDaEseguire.getNome().equals("vai"))
+		    this.vai(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("aiuto"))
+		    this.aiuto();
+		else if (comandoDaEseguire.getNome().equals("prendi"))
+		    this.prendi(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("posa"))
+		    this.posa(comandoDaEseguire.getParametro());
+		else
+		    System.out.println("Comando sconosciuto");
+		if (this.partita.isFinita()) {
+		    if (this.partita.vinta()) {
+			System.out.println("Hai vinto!");
+		    }
+		    return true;
+		}
+		return false;
     }   
 
 	// implementazioni dei comandi dell'utente:
@@ -92,39 +95,38 @@ public class DiaDia {
 	}
 
     private void prendi(String nomeAttrezzo){
-	if (nomeAttrezzo == null) {
-	    System.out.println("Prendere cosa??");
-	    return;
-	}
+		if (nomeAttrezzo == null) {
+		    System.out.println("Prendere cosa??");
+		    return;
+		}
+		Stanza curr = this.partita.lab.getStanzaCorrente();
+		Giocatore g = this.partita.getGiocatore();
 	
-	Stanza curr = this.partita.getStanzaCorrente();
-	Giocatore g = this.partita.getGiocatore();
-
-	if (curr.hasAttrezzo(nomeAttrezzo)) {
-	    Attrezzo a = curr.getAttrezzo(nomeAttrezzo);
-	    g.getBorsa().addAttrezzo(a);
-	    curr.removeAttrezzo(a);
-	} else {
-	    System.out.println(nomeAttrezzo + " non e' presente nella stanza!");
-	}
+		if (curr.hasAttrezzo(nomeAttrezzo)) {
+		    Attrezzo a = curr.getAttrezzo(nomeAttrezzo);
+		    g.getBorsa().addAttrezzo(a);
+		    curr.removeAttrezzo(a);
+		} else {
+		    System.out.println(nomeAttrezzo + " non e' presente nella stanza!");
+		}
     }
 
     private void posa(String nomeAttrezzo) {
-	if (nomeAttrezzo == null) {
-	    System.out.println("Posare cosa?");
-	    return;
-	}
+		if (nomeAttrezzo == null) {
+		    System.out.println("Posare cosa?");
+		    return;
+		}
 
-	Stanza curr = this.partita.getStanzaCorrente();
-	Giocatore g = this.partita.getGiocatore();
+		Stanza curr = this.partita.lab.getStanzaCorrente();
+		Giocatore g = this.partita.getGiocatore();
 
-	if (g.getBorsa().hasAttrezzo(nomeAttrezzo)) {
-	    Attrezzo a = g.getBorsa().getAttrezzo(nomeAttrezzo);
-	    curr.addAttrezzo(a);
-	    g.getBorsa().removeAttrezzo(nomeAttrezzo);
-	} else {
-	    System.out.println(nomeAttrezzo + " non e' presente nella tua borsa!");
-	}
+		if (g.getBorsa().hasAttrezzo(nomeAttrezzo)) {
+		    Attrezzo a = g.getBorsa().getAttrezzo(nomeAttrezzo);
+		    curr.addAttrezzo(a);
+		    g.getBorsa().removeAttrezzo(nomeAttrezzo);
+		} else {
+		    System.out.println(nomeAttrezzo + " non e' presente nella tua borsa!");
+		}
     }
 
 	/**
