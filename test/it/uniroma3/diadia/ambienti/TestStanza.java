@@ -1,11 +1,11 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.ambienti;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class Prova {
+class TestStanza {
 
 	@BeforeEach
 	void setUp() throws Exception {
