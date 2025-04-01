@@ -170,20 +170,20 @@ public class Stanza {
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
 	    if (attrezzo != null && this.hasAttrezzo(attrezzo.getNome())) {
-		String nome = attrezzo.getNome();
-		//boolean found = false;
-		for (int i=0; i<this.numeroAttrezzi; i++) {
-		    if (this.attrezzi[i].getNome().equals(nome)) {
-			numeroAttrezzi--;
-				for (int j=i; j<this.numeroAttrezzi; j++) {
-				    this.attrezzi[j] = this.attrezzi[j+1];
-				}
-			// posso uscire dal for, ho rimosso l'attrezzo e
-			// spostato il resto dell'array
-			break;
-		    }
-		}
-		return true;
+			String nome = attrezzo.getNome();
+			//boolean found = false;
+			for (int i=0; i<this.numeroAttrezzi; i++) {
+			    if (this.attrezzi[i].getNome().equals(nome)) {
+			    	numeroAttrezzi--;
+					for (int j=i; j<this.numeroAttrezzi; j++) {
+					    this.attrezzi[j] = this.attrezzi[j+1];
+					}
+					// posso uscire dal for, ho rimosso l'attrezzo e
+					// spostato il resto dell'array
+					break;
+			    }
+			}
+			return true;
 	    } else {
 		return false;
 	    }
