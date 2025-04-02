@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 class TestPartita {
 	
 	Partita testPartita;
@@ -34,7 +33,8 @@ class TestPartita {
 	
 	@Test
 	void testVinta() {
-		this.testPartita.lab.setStanzaCorrente(this.testPartita.lab.getStanzaVincente());
+		Labirinto lab = this.testPartita.getLabirinto();
+		lab.setStanzaCorrente(lab.getStanzaVincente());
 		assertTrue(this.testPartita.vinta());
 	}
 
