@@ -174,10 +174,13 @@ public class Stanza {
 			//boolean found = false;
 			for (int i=0; i<this.numeroAttrezzi; i++) {
 			    if (this.attrezzi[i].getNome().equals(nome)) {
+			    	if (numeroAttrezzi == 1) {
+			    		this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+			    	} else {
+			    		for (int j=i; j<this.numeroAttrezzi - 1; j++) 
+			    			this.attrezzi[j] = this.attrezzi[j+1];
+			    	}
 			    	numeroAttrezzi--;
-					for (int j=i; j<this.numeroAttrezzi; j++) {
-					    this.attrezzi[j] = this.attrezzi[j+1];
-					}
 					// posso uscire dal for, ho rimosso l'attrezzo e
 					// spostato il resto dell'array
 					break;
