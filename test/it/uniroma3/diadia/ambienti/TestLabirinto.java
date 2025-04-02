@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class testLabirinto {
+class TestLabirinto {
 	Labirinto labirinto;
 	Stanza stanzaCorrente;
 	Stanza stanzaVincente;
