@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Labirinto;
 
 class TestPartita {
 	
@@ -34,7 +35,8 @@ class TestPartita {
 	
 	@Test
 	void testVinta() {
-		this.testPartita.lab.setStanzaCorrente(this.testPartita.lab.getStanzaVincente());
+		Labirinto lab = this.testPartita.getLabirinto();
+		lab.setStanzaCorrente(lab.getStanzaVincente());
 		assertTrue(this.testPartita.vinta());
 	}
 

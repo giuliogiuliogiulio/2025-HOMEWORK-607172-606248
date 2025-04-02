@@ -99,7 +99,7 @@ public class DiaDia {
 		    System.out.println("Prendere cosa??");
 		    return;
 		}
-		Stanza curr = this.partita.lab.getStanzaCorrente();
+		Stanza curr = this.partita.getLabirinto().getStanzaCorrente();
 		Giocatore g = this.partita.getGiocatore();
 	
 		if (curr.hasAttrezzo(nomeAttrezzo)) {
@@ -117,7 +117,7 @@ public class DiaDia {
 		    return;
 		}
 
-		Stanza curr = this.partita.lab.getStanzaCorrente();
+		Stanza curr = this.partita.getLabirinto().getStanzaCorrente();
 		Giocatore g = this.partita.getGiocatore();
 
 		if (g.getBorsa().hasAttrezzo(nomeAttrezzo)) {
@@ -137,11 +137,11 @@ public class DiaDia {
 		if(direzione==null)
 			System.out.println("Dove vuoi andare ?");
 		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.lab.getStanzaCorrente().getStanzaAdiacente(direzione);
+		prossimaStanza = this.partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
 			System.out.println("Direzione inesistente");
 		else {
-			this.partita.lab.setStanzaCorrente(prossimaStanza);
+			this.partita.getLabirinto().setStanzaCorrente(prossimaStanza);
 			int cfu = this.partita.getGiocatore().getCfu();
 			this.partita.getGiocatore().setCfu(--cfu);
 		}
