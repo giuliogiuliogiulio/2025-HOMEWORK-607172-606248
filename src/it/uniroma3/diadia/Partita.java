@@ -17,7 +17,7 @@ public class Partita {
     //private Stanza stanzaVincente;
     private boolean finita;
 
-    public Giocatore giocatore;
+    private Giocatore giocatore;
     public Labirinto lab;
 	
     public Partita(){
