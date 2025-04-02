@@ -69,7 +69,9 @@ class TestStanza {
 	void testRemoveAttrezzoRimossoSingoloAttrezzo() {
 		Attrezzo attrezzo = new Attrezzo("attrezzo", 8);
 		this.stanza.addAttrezzo(attrezzo);
-		assertEquals(true, this.stanza.removeAttrezzo(attrezzo));
+		boolean rimosso = this.stanza.removeAttrezzo(attrezzo);
+		boolean presente = this.stanza.hasAttrezzo(attrezzo.getNome());
+		assertTrue(rimosso && !presente);
 	}
 	
 	@Test
