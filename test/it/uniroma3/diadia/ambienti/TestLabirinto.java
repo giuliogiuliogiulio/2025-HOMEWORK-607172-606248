@@ -19,14 +19,14 @@ class TestLabirinto {
 	void testNuovoLabirinto() {
 		assertEquals(null, this.labirinto.getStanzaVincente());
 	}
-	
+
 	@Test
 	void testGetStanzaVincente() {
 		this.labirinto.creaStanze();
 		Stanza vincente = this.labirinto.getStanzaVincente();
 		assertEquals("Biblioteca", vincente.getNome());
 	}
-	
+
 	@Test
 	void testSetStanzaCorrente() {
 		Stanza corrente = new Stanza("corrente");

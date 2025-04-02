@@ -17,12 +17,12 @@ class TestGiocatore {
 	void testGetBorsa() {
 		assertTrue(this.giocatore.getBorsa() != null);
 	}
-	
+
 	@Test
 	void testGetCfu() {
 		assertTrue(this.giocatore.getCfu() == 20);
 	}
-	
+
 	@Test
 	void testSetCfu() {
 		this.giocatore.setCfu(5);
