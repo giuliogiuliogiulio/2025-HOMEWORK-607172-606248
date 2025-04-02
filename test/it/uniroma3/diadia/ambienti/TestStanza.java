@@ -75,6 +75,29 @@ class TestStanza {
 	}
 	
 	@Test
+	void testRemove10Attrezzi() {
+		Attrezzo[] attrezzi = new Attrezzo[10];
+		// crea 10 attrezzi
+		for (int i=0; i<10; i++) {
+			String nome = "attrezzo " + i + "-esimo";
+			attrezzi[i] = new Attrezzo(nome, 1);
+		}
+		// aggiungi 10 attrezzi
+		for (int i=0; i<10; i++)
+			this.stanza.addAttrezzo(attrezzi[i]);
+		// rimuovi 10 attrezzi
+		boolean rimozioni = true;
+		for (int i=0; i<10; i++)
+			rimozioni &= this.stanza.removeAttrezzo(attrezzi[i]);
+		// controlla i 10 attrezzi
+		boolean presenti = false;
+		for (int i=0; i<10; i++) 
+			presenti |= this.stanza.hasAttrezzo(attrezzi[i].getNome());
+		assertTrue(rimozioni && !presenti);
+	}
+	
+	
+	@Test
 	void testRemoveAttrezzoGiàRimosso() {
 		Attrezzo attrezzo = new Attrezzo("attrezzo", 8);
 		this.stanza.removeAttrezzo(attrezzo);
