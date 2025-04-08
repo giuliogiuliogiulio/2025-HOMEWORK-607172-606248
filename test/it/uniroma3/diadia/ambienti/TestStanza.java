@@ -98,7 +98,7 @@ class TestStanza {
 	}
 
 	@Test
-	void testRemoveAttrezzoGiàRimosso() {
+	void testRemoveAttrezzoGiaRimosso() {
 		Attrezzo attrezzo = new Attrezzo("attrezzo", 8);
 		this.stanza.removeAttrezzo(attrezzo);
 		assertEquals(false, this.stanza.removeAttrezzo(attrezzo));
