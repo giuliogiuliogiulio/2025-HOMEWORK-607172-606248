@@ -19,7 +19,7 @@ class TestComandoPosa {
 		partita = new Partita();
 		attrezzo = new Attrezzo("lanterna", 0);
 		stanzaVuota = new Stanza("vuota");
-		comandoPosa = new ComandoPosa();
+		comandoPosa = new ComandoPosa(new IOConsole());
 		partita.getLabirinto().setStanzaCorrente(stanzaVuota);
 	}
 	

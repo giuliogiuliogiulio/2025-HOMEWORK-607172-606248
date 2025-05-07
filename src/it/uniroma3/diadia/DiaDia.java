@@ -63,7 +63,7 @@ public class DiaDia {
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta()) {
-			System.out.println("Hai vinto!");
+			console.mostraMessaggio("Hai vinto!");
 		}
 		
 		return this.partita.isFinita();

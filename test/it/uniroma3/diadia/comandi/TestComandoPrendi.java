@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -32,7 +33,7 @@ class TestComandoPrendi {
 		stanzaDue.addAttrezzo(new Attrezzo(attr, 0));
 		stanzaDue.addAttrezzo(new Attrezzo(attr2, 0));
 		
-		prendi = new ComandoPrendi();
+		prendi = new ComandoPrendi(new IOConsole());
 		p = new Partita();
 	}
 
