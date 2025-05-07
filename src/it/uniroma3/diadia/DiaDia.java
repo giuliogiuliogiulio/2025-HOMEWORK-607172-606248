@@ -3,7 +3,7 @@ package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Stanza;
 
 import it.uniroma3.diadia.attrezzi.*;
-
+import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.giocatore.*;
 
 import it.uniroma3.diadia.IOConsole.*;
@@ -19,7 +19,7 @@ import it.uniroma3.diadia.IOConsole.*;
  * @version base
  */
 
-public class DiaDia {
+public class DiaDia implements Comando{
 
 	IOConsole console = new IOConsole();
 

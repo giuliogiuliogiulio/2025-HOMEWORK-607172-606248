@@ -1,6 +1,7 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.comandi;
+import it.uniroma3.diadia.*;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 /**
  * Questa classe modella un comando. Un comando consiste al piu' di due parole:
@@ -12,8 +13,12 @@ import java.util.Scanner;
  * @version base
  */
 
-public class Comando {
-
+public interface Comando {
+	
+	public void esegui(Partita partita);
+	public void setParametro(String parametro);
+	
+	/*
 	private String nome;
 	private String parametro;
 
@@ -40,5 +45,5 @@ public class Comando {
 
 	public boolean sconosciuto() {
 		return (this.nome == null);
-	}
+	}*/
 }
