@@ -1,4 +1,4 @@
-package it.uniroma3.diadia.comandi;
+ package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
