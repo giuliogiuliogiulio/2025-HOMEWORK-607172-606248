@@ -6,8 +6,7 @@ public class ComandoFine implements Comando {
 
 	@Override
 	public void esegui(Partita partita) {
-		// TODO Auto-generated method stub
-
+		System.out.println("Grazie di aver giocato");
 	}
 
 	@Override

@@ -96,12 +96,7 @@ public class DiaDia {
 		}
 	}
 
-	/**
-	 * Comando "Fine".
-	 */
-	private void fine() {
-		console.mostraMessaggio("Grazie di aver giocato!"); // si desidera smettere
-	}
+
 
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();
