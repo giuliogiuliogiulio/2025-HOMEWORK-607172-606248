@@ -96,25 +96,6 @@ public class DiaDia {
 		}
 	}
 
-	private void posa(String nomeAttrezzo) {
-		if (nomeAttrezzo == null) {
-			console.mostraMessaggio("Posare cosa?");
-			return;
-		}
-
-		Stanza curr = this.partita.getLabirinto().getStanzaCorrente();
-		Giocatore g = this.partita.getGiocatore();
-
-		if (g.getBorsa().hasAttrezzo(nomeAttrezzo)) {
-			Attrezzo a = g.getBorsa().getAttrezzo(nomeAttrezzo);
-			curr.addAttrezzo(a);
-			g.getBorsa().removeAttrezzo(nomeAttrezzo);
-		} else {
-			console.mostraMessaggio(nomeAttrezzo + " non e' presente nella tua borsa!");
-		}
-	}
-
-
 	/**
 	 * Comando "Fine".
 	 */
