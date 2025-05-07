@@ -2,7 +2,6 @@ package it.uniroma3.diadia;
 
 import it.uniroma3.diadia.ambienti.Stanza;
 
-
 import it.uniroma3.diadia.attrezzi.*;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.giocatore.*;
@@ -24,7 +23,7 @@ import it.uniroma3.diadia.comandi.*;
 
 public class DiaDia {
 
-	IOConsole console = new IOConsole();
+	IO console;
 
 	static final private String MESSAGGIO_BENVENUTO = ""
 			+ "Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n"
@@ -35,18 +34,17 @@ public class DiaDia {
 			+ "o regalarli se pensi che possano ingraziarti qualcuno.\n\n"
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
 
-	static final private String[] elencoComandi = { "vai", "aiuto", "prendi", "posa", "fine" };
-
 	private Partita partita;
 
-	public DiaDia() {
+	public DiaDia(IO console) {
 		this.partita = new Partita();
+		this.console = console;
 	}
 
 	public void gioca() {
 		String istruzione;
 
-		System.out.println(MESSAGGIO_BENVENUTO);
+		console.mostraMessaggio(MESSAGGIO_BENVENUTO);
 		do
 			istruzione = console.leggiRiga();
 		while (!processaIstruzione(istruzione));
@@ -60,7 +58,7 @@ public class DiaDia {
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
-		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica();
+		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica(this.console);
 		
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
@@ -73,7 +71,8 @@ public class DiaDia {
 
 
 	public static void main(String[] argc) {
-		DiaDia gioco = new DiaDia();
+		IO io = new IOConsole();
+		DiaDia gioco = new DiaDia(io);
 		gioco.gioca();
 	}
 }

@@ -1,11 +1,16 @@
 package it.uniroma3.diadia.comandi;
 
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
 public class ComandoPrendi implements Comando {
+	
+	private IO io;
+	
+	ComandoPrendi(IO io) { this.io = io; }
 
 	String nomeAttrezzo;
 
@@ -13,7 +18,7 @@ public class ComandoPrendi implements Comando {
 	public void esegui(Partita partita) {
 
 		if (nomeAttrezzo == null) {
-			System.out.println("Prendere cosa??");
+			io.mostraMessaggio("Prendere cosa??");
 			return;
 		}
 		Stanza curr = partita.getLabirinto().getStanzaCorrente();
@@ -24,7 +29,7 @@ public class ComandoPrendi implements Comando {
 			g.getBorsa().addAttrezzo(a);
 			curr.removeAttrezzo(a);
 		} else {
-			System.out.println(nomeAttrezzo + " non e' presente nella stanza!");
+			io.mostraMessaggio(nomeAttrezzo + " non e' presente nella stanza!");
 		}
 	}
 
