@@ -72,32 +72,6 @@ public class DiaDia {
 	}
 
 
-	// implementazioni dei comandi dell'utente:
-
-	/**
-	 * Stampa informazioni di aiuto.
-	 */
-
-
-	private void prendi(String nomeAttrezzo) {
-		if (nomeAttrezzo == null) {
-			console.mostraMessaggio("Prendere cosa??");
-			return;
-		}
-		Stanza curr = this.partita.getLabirinto().getStanzaCorrente();
-		Giocatore g = this.partita.getGiocatore();
-
-		if (curr.hasAttrezzo(nomeAttrezzo)) {
-			Attrezzo a = curr.getAttrezzo(nomeAttrezzo);
-			g.getBorsa().addAttrezzo(a);
-			curr.removeAttrezzo(a);
-		} else {
-			console.mostraMessaggio(nomeAttrezzo + " non e' presente nella stanza!");
-		}
-	}
-
-
-
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();
 		gioco.gioca();
