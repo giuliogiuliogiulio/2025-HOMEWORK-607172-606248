@@ -77,11 +77,7 @@ public class DiaDia {
 	/**
 	 * Stampa informazioni di aiuto.
 	 */
-	private void aiuto() {
-		for (int i = 0; i < elencoComandi.length; i++)
-			console.mostraMessaggio(elencoComandi[i] + " ");
-		console.mostraMessaggio(" ");
-	}
+
 
 	private void prendi(String nomeAttrezzo) {
 		if (nomeAttrezzo == null) {

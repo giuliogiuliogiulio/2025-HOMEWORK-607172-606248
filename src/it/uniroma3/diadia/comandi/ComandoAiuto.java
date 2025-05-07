@@ -6,8 +6,7 @@ public class ComandoAiuto implements Comando {
 
 	@Override
 	public void esegui(Partita partita) {
-		// TODO Auto-generated method stub
-
+		System.out.print("vai, aiuto, prendi, posa, fine, guarda");
 	}
 
 	@Override
