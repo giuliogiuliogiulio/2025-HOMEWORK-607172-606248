@@ -38,4 +38,16 @@ public class ComandoVai implements Comando {
 		io.mostraMessaggio(lab.getStanzaCorrente().getNome());
 		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu() - 1);
 	}
+
+	@Override
+	public String getNome() {
+		// TODO Auto-generated method stub
+		return "vai";
+	}
+
+	@Override
+	public String getParametro() {
+		// TODO Auto-generated method stub
+		return direzione;
+	}
 }

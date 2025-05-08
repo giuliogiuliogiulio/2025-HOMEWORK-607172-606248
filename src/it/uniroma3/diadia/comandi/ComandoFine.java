@@ -17,4 +17,16 @@ public class ComandoFine implements Comando {
 	@Override
 	public void setParametro(String parametro) {}
 
+	@Override
+	public String getNome() {
+		// TODO Auto-generated method stub
+		return "fine";
+	}
+
+	@Override
+	public String getParametro() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
