@@ -10,7 +10,7 @@ class TestComandoPosa {
 	
 	Partita partita;
 	Attrezzo attrezzo;
-	Stanza stanzaVuota;
+	Stanza stanzaVuota, stanzaPiena;
 	Comando comandoPosa;
 	
 	@BeforeEach
@@ -18,6 +18,11 @@ class TestComandoPosa {
 		partita = new Partita();
 		attrezzo = new Attrezzo("lanterna", 0);
 		stanzaVuota = new Stanza("vuota");
+		
+		stanzaPiena = new Stanza("piena");
+		Attrezzo attrStanzaPiena = new Attrezzo("pieno", 0);
+		while(stanzaPiena.addAttrezzo(attrStanzaPiena));
+		
 		comandoPosa = new ComandoPosa(new IOConsole());
 		partita.getLabirinto().setStanzaCorrente(stanzaVuota);
 	}
@@ -25,18 +30,18 @@ class TestComandoPosa {
 
 	@Test
 	void testNessunAttrezzo() {
-		comandoPosa.setParametro("lanterna");
+		comandoPosa.setParametro("niente");
 		comandoPosa.esegui(partita);
-		assertFalse(partita.getLabirinto().getStanzaCorrente().hasAttrezzo("lanterna"));
+		assertFalse(partita.getLabirinto().getStanzaCorrente().hasAttrezzo("niente"));
 	}
 	
 	@Test
 	void testAttrezzoPosato() {
 		partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
-		comandoPosa.setParametro("lanterna");
+		comandoPosa.setParametro(attrezzo.getNome());
 		comandoPosa.esegui(partita);
-		assertFalse(partita.getGiocatore().getBorsa().hasAttrezzo("lanterna"));
-		assertTrue(partita.getLabirinto().getStanzaCorrente().hasAttrezzo("lanterna"));
+		assertFalse(partita.getGiocatore().getBorsa().hasAttrezzo(attrezzo.getNome()));
+		assertTrue(partita.getLabirinto().getStanzaCorrente().hasAttrezzo(attrezzo.getNome()));
 	}
 	
 	@Test
@@ -44,6 +49,17 @@ class TestComandoPosa {
 		partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
 		comandoPosa.setParametro("osso");
 		comandoPosa.esegui(partita);
+		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo(attrezzo.getNome()));
+		assertFalse(partita.getLabirinto().getStanzaCorrente().hasAttrezzo(attrezzo.getNome()));
+	}
+	
+	@Test
+	void testStanzaPiena() {
+		partita.getLabirinto().setStanzaCorrente(stanzaPiena);
+		partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
+		comandoPosa.setParametro(attrezzo.getNome());
+		comandoPosa.esegui(partita);
+		// il giocatore non perde l'attrezzo perchè la stanza è piena
 		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo("lanterna"));
 		assertFalse(partita.getLabirinto().getStanzaCorrente().hasAttrezzo("lanterna"));
 	}

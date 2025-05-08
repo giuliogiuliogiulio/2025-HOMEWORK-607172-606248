@@ -26,8 +26,11 @@ public class ComandoPosa implements Comando {
 
 		if (g.getBorsa().hasAttrezzo(nomeAttrezzo)) {
 			Attrezzo a = g.getBorsa().getAttrezzo(nomeAttrezzo);
-			curr.addAttrezzo(a);
-			g.getBorsa().removeAttrezzo(nomeAttrezzo);
+			if (curr.addAttrezzo(a)) {
+				g.getBorsa().removeAttrezzo(nomeAttrezzo);
+			} else {
+				io.mostraMessaggio("la stanza è piena!");
+			}
 		} else {
 			io.mostraMessaggio(nomeAttrezzo + " non e' presente nella tua borsa!");
 		}
