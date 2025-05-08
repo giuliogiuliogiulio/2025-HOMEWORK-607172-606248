@@ -7,10 +7,12 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
 public class ComandoPrendi implements Comando {
-	
+
 	private IO io;
-	
-	ComandoPrendi(IO io) { this.io = io; }
+
+	ComandoPrendi(IO io) {
+		this.io = io;
+	}
 
 	String nomeAttrezzo;
 

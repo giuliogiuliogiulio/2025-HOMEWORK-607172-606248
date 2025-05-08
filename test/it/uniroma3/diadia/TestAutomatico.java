@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TestAutomatico {
-	
+
 	IOSimulator simulatore;
 	DiaDia gioco;
 
@@ -18,7 +18,7 @@ class TestAutomatico {
 
 	@Test
 	void testVittoriaImmediata() {
-		String[] istruzioni = {"vai nord"};
+		String[] istruzioni = { "vai nord" };
 		simulatore.setIstruzioni(istruzioni);
 		gioco.gioca();
 		String[] result = simulatore.getMessaggi();

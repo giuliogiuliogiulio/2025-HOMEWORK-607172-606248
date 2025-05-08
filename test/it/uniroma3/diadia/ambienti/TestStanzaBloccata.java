@@ -10,11 +10,11 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 class TestStanzaBloccata {
 
 	StanzaBloccata bloccata;
-	
+
 	Attrezzo chiave;
-	
+
 	String direzioneBloccata;
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		chiave = new Attrezzo("chiave", 0);
@@ -26,20 +26,20 @@ class TestStanzaBloccata {
 	void testBloccata() {
 		assertEquals(bloccata, bloccata.getStanzaAdiacente(direzioneBloccata));
 	}
-	
+
 	@Test
 	void testSbloccata() {
 		bloccata.addAttrezzo(chiave);
 		assertNotEquals(bloccata, bloccata.getStanzaAdiacente(direzioneBloccata));
 	}
-	
+
 	@Test
 	void testSbloccataChiaveSbagliata() {
 		Attrezzo sbagliato = new Attrezzo("sbagliato", 0);
 		bloccata.addAttrezzo(sbagliato);
 		assertEquals(bloccata, bloccata.getStanzaAdiacente(direzioneBloccata));
 	}
-	
+
 	@Test
 	void testDescrizioneContieneInfo() {
 		String descrizione = bloccata.getDescrizione();

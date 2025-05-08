@@ -1,17 +1,17 @@
 package it.uniroma3.diadia;
 
 public class IOSimulator implements IO {
-	
+
 	private String[] istruzioni;
 	private int currentIstruzione = 0;
-	
+
 	private String[] log;
 	private int currentLog = 0;
-	
+
 	public IOSimulator() {
 		this.log = new String[20];
 	}
-	
+
 	@Override
 	public void mostraMessaggio(String messaggio) {
 		if (log.length == currentLog) {
@@ -34,14 +34,13 @@ public class IOSimulator implements IO {
 		currentIstruzione--;
 		return output;
 	}
-	
+
 	public void setIstruzioni(String[] s) {
 		this.istruzioni = s;
 	}
-	
+
 	public String[] getMessaggi() {
 		return this.log;
 	}
 
 }
-

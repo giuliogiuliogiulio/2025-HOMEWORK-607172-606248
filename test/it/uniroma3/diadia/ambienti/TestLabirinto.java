@@ -35,7 +35,7 @@ class TestLabirinto {
 		this.labirinto.setStanzaCorrente(corrente);
 		assertEquals(corrente, this.labirinto.getStanzaCorrente());
 	}
-	
+
 	@Test
 	void testStanzaAdiacenteAtrioNord_isBiblioteca() {
 		this.labirinto.creaStanze();
@@ -43,7 +43,7 @@ class TestLabirinto {
 		Stanza biblio = corrente.getStanzaAdiacente("nord");
 		assertEquals("Biblioteca", biblio.getNome());
 	}
-	
+
 	@Test
 	void testAttrezzoInAtrio_isOsso() {
 		this.labirinto.creaStanze();
@@ -51,7 +51,7 @@ class TestLabirinto {
 		Attrezzo osso = corrente.getAttrezzo("osso");
 		assertEquals("osso", osso.getNome());
 	}
-	
+
 	@Test
 	void testAttrezzoInAulaN10_isLanterna() {
 		this.labirinto.creaStanze();

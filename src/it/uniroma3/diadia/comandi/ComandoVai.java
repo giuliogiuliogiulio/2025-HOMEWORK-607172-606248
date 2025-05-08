@@ -6,13 +6,15 @@ import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 
 public class ComandoVai implements Comando {
-	
+
 	private IO io;
-	
+
 	private String direzione;
 
-	ComandoVai(IO io) { this.io = io; }
-	
+	ComandoVai(IO io) {
+		this.io = io;
+	}
+
 	@Override
 	public void setParametro(String parametro) {
 		this.direzione = parametro;

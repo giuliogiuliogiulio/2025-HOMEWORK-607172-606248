@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import it.uniroma3.diadia.IOConsole;
 
 class TestFabbricaDiComandiFisarmonica {
-	
+
 	FabbricaDiComandiFisarmonica f;
 
 	@BeforeEach
@@ -23,17 +23,11 @@ class TestFabbricaDiComandiFisarmonica {
 		Comando result = f.costruisciComando("slfhdsoblf fdsfsdf");
 		assertEquals(result.getNome(), "non valido");
 	}
-	
+
 	@Test
 	void testSwitchCase() {
-		String[] comandi = {
-				"posa x",
-				"prendi x",
-				"aiuto",
-				"fine",
-				"guarda"
-		};
-		
+		String[] comandi = { "posa x", "prendi x", "aiuto", "fine", "guarda" };
+
 		for (String c : comandi) {
 			Scanner s = new Scanner(c);
 			Comando result = f.costruisciComando(c);

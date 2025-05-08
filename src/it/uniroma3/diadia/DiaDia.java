@@ -50,16 +50,15 @@ public class DiaDia {
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
 		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica(this.console);
-		
+
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta()) {
 			console.mostraMessaggio("Hai vinto!");
 		}
-		
+
 		return this.partita.isFinita();
 	}
-
 
 	public static void main(String[] argc) {
 		IO io = new IOConsole();

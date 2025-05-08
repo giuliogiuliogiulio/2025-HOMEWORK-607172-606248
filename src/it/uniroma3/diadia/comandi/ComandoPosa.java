@@ -1,4 +1,4 @@
- package it.uniroma3.diadia.comandi;
+package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
@@ -7,13 +7,15 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
 public class ComandoPosa implements Comando {
-	
+
 	private IO io;
 
 	String nomeAttrezzo;
 
-	ComandoPosa(IO io) { this.io = io; }
-	
+	ComandoPosa(IO io) {
+		this.io = io;
+	}
+
 	@Override
 	public void esegui(Partita partita) {
 		if (nomeAttrezzo == null) {

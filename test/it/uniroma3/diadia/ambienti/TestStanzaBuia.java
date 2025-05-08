@@ -10,10 +10,9 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 class TestStanzaBuia {
 
 	StanzaBuia buia;
-	
+
 	Attrezzo luce;
-	
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		luce = new Attrezzo("luce", 0);
@@ -30,19 +29,19 @@ class TestStanzaBuia {
 		buia.addAttrezzo(luce);
 		assertNotEquals(buia.getDescrizione(), "qui c'è buio pesto");
 	}
-	
+
 	@Test
 	void testLuceRimuovi() {
 		buia.addAttrezzo(luce);
 		buia.removeAttrezzo(luce);
 		assertEquals(buia.getDescrizione(), "qui c'è buio pesto");
 	}
-	
+
 	@Test
 	void testAttrezzoSbagliato() {
 		Attrezzo sbagliato = new Attrezzo("sbagliato", 0);
 		buia.addAttrezzo(sbagliato);
 		assertEquals(buia.getDescrizione(), "qui c'è buio pesto");
 	}
-	
+
 }

@@ -10,9 +10,9 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 
 class TestComandoVai {
-	
+
 	Comando vai;
-	
+
 	Partita p;
 
 	@BeforeEach
@@ -21,7 +21,7 @@ class TestComandoVai {
 		Stanza centro = new Stanza("semplice");
 		centro.impostaStanzaAdiacente("nord", new Stanza("nord"));
 		centro.impostaStanzaAdiacente("loop", centro);
-		
+
 		p = new Partita();
 		p.getLabirinto().setStanzaCorrente(centro);
 	}
@@ -34,7 +34,7 @@ class TestComandoVai {
 		assertEquals(p.getLabirinto().getStanzaCorrente().getNome(), "nord");
 		assertNotEquals(p.getLabirinto().getStanzaCorrente(), curr);
 	}
-	
+
 	@Test
 	void testDirezioneNonLecita() {
 		Stanza curr = p.getLabirinto().getStanzaCorrente();
@@ -42,7 +42,7 @@ class TestComandoVai {
 		vai.esegui(p);
 		assertEquals(curr, p.getLabirinto().getStanzaCorrente());
 	}
-	
+
 	@Test
 	void testLoop() {
 		Stanza curr = p.getLabirinto().getStanzaCorrente();
