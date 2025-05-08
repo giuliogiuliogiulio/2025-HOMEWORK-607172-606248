@@ -1,14 +1,6 @@
 package it.uniroma3.diadia;
 
-import it.uniroma3.diadia.ambienti.Stanza;
-
-import it.uniroma3.diadia.attrezzi.*;
-import it.uniroma3.diadia.comandi.Comando;
-import it.uniroma3.diadia.giocatore.*;
-
-import it.uniroma3.diadia.IOConsole.*;
 import it.uniroma3.diadia.comandi.*;
-
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -20,10 +12,9 @@ import it.uniroma3.diadia.comandi.*;
  * 
  * @version base
  */
-
 public class DiaDia {
 
-	IO console;
+	private IO console;
 
 	static final private String MESSAGGIO_BENVENUTO = ""
 			+ "Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n"
