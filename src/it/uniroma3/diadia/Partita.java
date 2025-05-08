@@ -22,7 +22,6 @@ public class Partita {
 	public Partita() {
 		lab = new Labirinto();
 		lab.creaStanze();
-		// creaStanze();
 		this.finita = false;
 		this.giocatore = new Giocatore();
 	}
