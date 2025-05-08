@@ -26,8 +26,11 @@ public class ComandoPrendi implements Comando {
 
 		if (curr.hasAttrezzo(nomeAttrezzo)) {
 			Attrezzo a = curr.getAttrezzo(nomeAttrezzo);
-			g.getBorsa().addAttrezzo(a);
-			curr.removeAttrezzo(a);
+			if (g.getBorsa().addAttrezzo(a)) {
+				curr.removeAttrezzo(a);
+			} else {
+				io.mostraMessaggio("la borsa è piena!");
+			}
 		} else {
 			io.mostraMessaggio(nomeAttrezzo + " non e' presente nella stanza!");
 		}

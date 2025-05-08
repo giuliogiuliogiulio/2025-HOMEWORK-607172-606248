@@ -62,5 +62,17 @@ class TestComandoPrendi {
 		assertTrue(p.getLabirinto().getStanzaCorrente().hasAttrezzo(attr2));
 		assertFalse(p.getLabirinto().getStanzaCorrente().hasAttrezzo(attr));
 	}
+	
+	@Test
+	void TestPrendiOggBorsaPiena() {
+		Attrezzo dummy = new Attrezzo("dummy", 0);
+		// riempi la borsa del giocatore
+		while(p.getGiocatore().getBorsa().addAttrezzo(dummy));
+		p.getLabirinto().setStanzaCorrente(stanzaSingolo);
+		prendi.setParametro(attr);
+		prendi.esegui(p);
+		assertTrue(p.getLabirinto().getStanzaCorrente().hasAttrezzo(attr));
+		assertFalse(p.getGiocatore().getBorsa().hasAttrezzo(attr));
+	}
 
 }
