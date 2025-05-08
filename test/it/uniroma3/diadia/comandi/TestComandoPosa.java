@@ -2,7 +2,6 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.*;
 import it.uniroma3.diadia.attrezzi.*;
 import static org.junit.jupiter.api.Assertions.*;
-import it.uniroma3.diadia.giocatore.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
