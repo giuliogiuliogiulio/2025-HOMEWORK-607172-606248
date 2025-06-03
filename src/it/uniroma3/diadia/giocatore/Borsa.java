@@ -121,6 +121,27 @@ public class Borsa {
 		
 		return res;
 	}
+	
+	public SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso() {
+		TreeSet<Attrezzo> res = new TreeSet<>(new Comparator<Attrezzo>() {
+			@Override
+			public int compare(Attrezzo a1, Attrezzo a2) {
+				if (a1.getPeso() < a2.getPeso()) {
+					return -1;
+				} else if (a1.getPeso() > a2.getPeso()) {
+					return 1;
+				} else {
+					return a1.getNome().compareTo(a2.getNome());
+				}
+			}
+		});
+		
+		if (res.addAll(attrezzi)) {
+			return res;
+		} else {
+			return null;
+		}	
+	}
 
 	@Override
 	public String toString() {
