@@ -17,14 +17,14 @@ class TestStanza {
 	// Test stanzaAdiacente()
 	@Test
 	void testStanzaAdiacenteNessunaStanza() {
-		assertEquals(null, this.stanza.getStanzaAdiacente("direzione"));
+		assertEquals(null, this.stanza.getStanzaAdiacente("nord"));
 	}
 
 	@Test
 	void testStanzaAdiacenteUnaNuovaStanza() {
 		Stanza stanzaAdiacente = new Stanza("stanzaAdiacente");
-		this.stanza.impostaStanzaAdiacente("direzione", stanzaAdiacente);
-		assertEquals(stanzaAdiacente, this.stanza.getStanzaAdiacente("direzione"));
+		this.stanza.impostaStanzaAdiacente("nord", stanzaAdiacente);
+		assertEquals(stanzaAdiacente, this.stanza.getStanzaAdiacente("nord"));
 	}
 
 	@Test
