@@ -1,6 +1,14 @@
 package it.uniroma3.diadia.giocatore;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -64,16 +72,64 @@ public class Borsa {
 			}
 		}
 		
+		return res;	
+	}
+	
+	public List<Attrezzo> getContenutoOrdinatoPerPeso() {
+		this.attrezzi.sort(new Comparator<Attrezzo>() {
+			@Override
+			public int compare(Attrezzo a1, Attrezzo a2) {
+				if (a1.getPeso() < a2.getPeso()) {
+					return -1;
+				} else if (a1.getPeso() > a2.getPeso()) {
+					return 1;
+				} else {
+					return a1.getNome().compareTo(a2.getNome());
+				}
+			}
+		});
+		
+		return this.attrezzi;
+	}
+	
+	public SortedSet<Attrezzo> getContenutoOrdinatoPerNome() {
+		TreeSet<Attrezzo> res = new TreeSet<>(new Comparator<Attrezzo>() {
+			@Override
+			public int compare(Attrezzo a1, Attrezzo a2) {
+				return a1.getNome().compareTo(a2.getNome());
+			}
+		});
+		
+		res.addAll(this.attrezzi);
+		
+		return res;
+	}
+	
+	public Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso() {
+		HashMap<Integer, Set<Attrezzo>> res = new HashMap<>();
+		
+		for (Attrezzo a : attrezzi) {
+			int peso = a.getPeso();
+			if (res.containsKey(peso)) {
+				res.get(peso).add(a);
+			} else {
+				Set<Attrezzo> s = new HashSet<Attrezzo>();
+				s.add(a);
+				res.put(peso, s);
+			}
+		}
+		
 		return res;
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 
 		if (!this.isEmpty()) {
 			s.append("Contenuto borsa (" + this.getPeso() + "kg/" + this.getPesoMax() + "kg): ");
-			for (Attrezzo a : attrezzi)
-				s.append(a.toString() + " ");
+			s.append('\n');
+			s.append(getContenutoOrdinatoPerPeso().toString());
 		} else
 			s.append("Borsa vuota");
 		return s.toString();
