@@ -7,10 +7,6 @@ public class ComandoGuarda extends AbstractComando implements Comando {
 
 	private IO io;
 
-	ComandoGuarda(IO io) {
-		this.io = io;
-	}
-
 	@Override
 	public void esegui(Partita partita) {
 		io.mostraMessaggio(partita.toString());
@@ -27,5 +23,8 @@ public class ComandoGuarda extends AbstractComando implements Comando {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public void setIO(IO io) { this.io = io; }
 
 }

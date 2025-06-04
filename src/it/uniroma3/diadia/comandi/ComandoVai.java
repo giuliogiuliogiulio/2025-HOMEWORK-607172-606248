@@ -11,10 +11,6 @@ public class ComandoVai implements Comando {
 
 	private String direzione;
 
-	ComandoVai(IO io) {
-		this.io = io;
-	}
-
 	@Override
 	public void setParametro(String parametro) {
 		this.direzione = parametro;
@@ -43,13 +39,14 @@ public class ComandoVai implements Comando {
 
 	@Override
 	public String getNome() {
-		// TODO Auto-generated method stub
 		return "vai";
 	}
 
 	@Override
 	public String getParametro() {
-		// TODO Auto-generated method stub
 		return direzione;
 	}
+	
+	@Override
+	public void setIO(IO io) { this.io = io; }
 }

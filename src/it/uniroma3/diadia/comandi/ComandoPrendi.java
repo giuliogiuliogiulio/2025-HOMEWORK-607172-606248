@@ -9,11 +9,7 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 public class ComandoPrendi implements Comando {
 
 	private IO io;
-
-	ComandoPrendi(IO io) {
-		this.io = io;
-	}
-
+	
 	String nomeAttrezzo;
 
 	@Override
@@ -55,4 +51,7 @@ public class ComandoPrendi implements Comando {
 		return nomeAttrezzo;
 	}
 
+	@Override
+	public void setIO(IO io) { this.io = io; }
+	
 }

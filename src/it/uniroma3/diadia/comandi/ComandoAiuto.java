@@ -7,10 +7,6 @@ public class ComandoAiuto extends AbstractComando implements Comando {
 
 	private IO io;
 
-	ComandoAiuto(IO io) {
-		this.io = io;
-	}
-
 	@Override
 	public void esegui(Partita partita) {
 		io.mostraMessaggio("vai, aiuto, prendi, posa, fine, guarda");
@@ -25,5 +21,8 @@ public class ComandoAiuto extends AbstractComando implements Comando {
 	public String getNome() {
 		return "aiuto";
 	}
+	
+	@Override
+	public void setIO(IO io) { this.io = io; }
 
 }

@@ -9,10 +9,6 @@ public class ComandoNonValido implements Comando {
 
 	private IO io;
 
-	ComandoNonValido(IO io) {
-		this.io = io;
-	}
-
 	@Override
 	public void esegui(Partita partita) {
 		io.mostraMessaggio("Comando non valido!!");
@@ -25,14 +21,15 @@ public class ComandoNonValido implements Comando {
 
 	@Override
 	public String getNome() {
-		// TODO Auto-generated method stub
 		return "non valido";
 	}
 
 	@Override
 	public String getParametro() {
-		// TODO Auto-generated method stub
 		return parametro;
 	}
+	
+	@Override
+	public void setIO(IO io) { this.io = io; }
 
 }

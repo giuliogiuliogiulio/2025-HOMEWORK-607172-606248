@@ -23,22 +23,23 @@ public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi {
 		if (scannerDiParole.hasNext())
 			parametro = scannerDiParole.next(); // seconda parola: eventuale parametro
 		if (nomeComando == null)
-			comando = new ComandoNonValido(io);
+			comando = new ComandoNonValido();
 		else if (nomeComando.equals("vai"))
-			comando = new ComandoVai(io);
+			comando = new ComandoVai();
 		else if (nomeComando.equals("prendi"))
-			comando = new ComandoPrendi(io);
+			comando = new ComandoPrendi();
 		else if (nomeComando.equals("posa"))
-			comando = new ComandoPosa(io);
+			comando = new ComandoPosa();
 		else if (nomeComando.equals("aiuto"))
-			comando = new ComandoAiuto(io);
+			comando = new ComandoAiuto();
 		else if (nomeComando.equals("fine"))
-			comando = new ComandoFine(io);
+			comando = new ComandoFine();
 		else if (nomeComando.equals("guarda"))
-			comando = new ComandoGuarda(io);
+			comando = new ComandoGuarda();
 		else
-			comando = new ComandoNonValido(io);
+			comando = new ComandoNonValido();
 		comando.setParametro(parametro);
+		comando.setIO(io);
 		scannerDiParole.close();
 		return comando;
 	}

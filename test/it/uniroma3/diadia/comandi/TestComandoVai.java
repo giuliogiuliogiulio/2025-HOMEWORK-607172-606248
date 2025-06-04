@@ -17,7 +17,8 @@ class TestComandoVai {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		vai = new ComandoVai(new IOConsole());
+		vai = new ComandoVai();
+		vai.setIO(new IOConsole());
 		Stanza centro = new Stanza("semplice");
 		centro.impostaStanzaAdiacente("nord", new Stanza("nord"));
 		centro.impostaStanzaAdiacente("loop", centro);

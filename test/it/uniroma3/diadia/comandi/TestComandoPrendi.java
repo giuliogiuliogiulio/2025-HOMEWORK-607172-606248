@@ -33,7 +33,8 @@ class TestComandoPrendi {
 		stanzaDue.addAttrezzo(new Attrezzo(attr, 0));
 		stanzaDue.addAttrezzo(new Attrezzo(attr2, 0));
 
-		prendi = new ComandoPrendi(new IOConsole());
+		prendi = new ComandoPrendi();
+		prendi.setIO(new IOConsole());
 		p = new Partita();
 	}
 

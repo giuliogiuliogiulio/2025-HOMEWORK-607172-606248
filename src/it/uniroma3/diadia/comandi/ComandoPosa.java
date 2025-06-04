@@ -12,10 +12,6 @@ public class ComandoPosa implements Comando {
 
 	String nomeAttrezzo;
 
-	ComandoPosa(IO io) {
-		this.io = io;
-	}
-
 	@Override
 	public void esegui(Partita partita) {
 		if (nomeAttrezzo == null) {
@@ -54,5 +50,8 @@ public class ComandoPosa implements Comando {
 		// TODO Auto-generated method stub
 		return nomeAttrezzo;
 	}
+	
+	@Override
+	public void setIO(IO io) { this.io = io; }
 
 }

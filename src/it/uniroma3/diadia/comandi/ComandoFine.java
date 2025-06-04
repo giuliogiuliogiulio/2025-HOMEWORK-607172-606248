@@ -6,11 +6,7 @@ import it.uniroma3.diadia.Partita;
 public class ComandoFine extends AbstractComando implements Comando {
 
 	private IO io;
-
-	ComandoFine(IO io) {
-		this.io = io;
-	}
-
+	
 	@Override
 	public void esegui(Partita partita) {
 		io.mostraMessaggio("Grazie di aver giocato");
@@ -28,5 +24,8 @@ public class ComandoFine extends AbstractComando implements Comando {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public void setIO(IO io) { this.io = io; }
 
 }
