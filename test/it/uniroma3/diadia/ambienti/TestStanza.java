@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class TestStanza {
 
-	private Stanza stanza;
+	Stanza stanza;
 
 	@BeforeEach
 	void setUp() throws Exception {
