@@ -2,6 +2,9 @@ package it.uniroma3.diadia;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,9 +24,9 @@ class TestAutomatico {
 		String[] istruzioni = { "vai nord" };
 		simulatore.setIstruzioni(istruzioni);
 		gioco.gioca();
-		String[] result = simulatore.getMessaggi();
-		assertEquals(result[1], "Biblioteca");
-		assertEquals(result[2], "Hai vinto!");
+		List<String> result = simulatore.getMessaggi();
+		assertEquals(result.get(1), "Biblioteca");
+		assertEquals(result.get(2), "Hai vinto!");
 	}
 
 }
