@@ -23,7 +23,7 @@ class TestComandoPosa {
 
 		stanzaPiena = new Stanza("piena");
 		Attrezzo attrStanzaPiena = new Attrezzo("pieno", 0);
-		while (stanzaPiena.addAttrezzo(attrStanzaPiena))
+		while (stanzaPiena.addAttrezzo(attrStanzaPiena)) // cambiato il significato di stanza piena, una stanza non può contenere più copie di uno stesso oggetto
 			;
 
 		comandoPosa = new ComandoPosa(new IOConsole());
@@ -57,13 +57,32 @@ class TestComandoPosa {
 
 	@Test
 	void testStanzaPiena() {
+		/*
 		partita.getLabirinto().setStanzaCorrente(stanzaPiena);
 		partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
 		comandoPosa.setParametro(attrezzo.getNome());
 		comandoPosa.esegui(partita);
 		// il giocatore non perde l'attrezzo perchè la stanza è piena
 		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo("lanterna"));
-		assertFalse(partita.getLabirinto().getStanzaCorrente().hasAttrezzo("lanterna"));
+		assertFalse(partita.getLabirinto().getStanzaCorrente().hasAttrezzo("lanterna"));*/
+		
+		partita.getLabirinto().setStanzaCorrente(stanzaPiena);
+		partita.getGiocatore().getBorsa().addAttrezzo(partita.getLabirinto().getStanzaCorrente().getAttrezzo("pieno"));
+		
+		comandoPosa.setParametro(partita.getLabirinto().getStanzaCorrente().getAttrezzo("pieno").getNome());
+		comandoPosa.esegui(partita);
+		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo("pieno"));
+		assertTrue(partita.getLabirinto().getStanzaCorrente().hasAttrezzo("pieno"));
+		
+		partita.getLabirinto().setStanzaCorrente(stanzaVuota);
+		partita.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzo);
+		partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
+
+		comandoPosa.setParametro(attrezzo.getNome());
+		comandoPosa.esegui(partita);
+		
+		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo("lanterna"));
+		assertTrue(partita.getLabirinto().getStanzaCorrente().hasAttrezzo("lanterna"));
 	}
 
 }
