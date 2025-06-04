@@ -30,7 +30,7 @@ class TestStanzaBloccata {
 	@Test
 	void testSbloccata() {
 		bloccata.addAttrezzo(chiave);
-		assertNotEquals(bloccata, bloccata.getStanzaAdiacente(direzioneBloccata));
+		assertNull(bloccata.getStanzaAdiacente(direzioneBloccata));
 	}
 
 	@Test

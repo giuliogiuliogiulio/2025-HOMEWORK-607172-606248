@@ -319,7 +319,7 @@ public class LabirintoBuilderTest {
 		assertEquals(nomeStanzaVincente, labirintoCompleto.getStanzaVincente().getNome());
 		Stanza corridoio = labirintoCompleto.getStanzaIniziale().getStanzaAdiacente("nord");
 		assertEquals("corridoio",corridoio.getNome());
-		assertTrue(corridoio.getDirezioni().containsAll(Arrays.asList("ovest","est","nord","sud")));
+		assertTrue(corridoio.getDirezioni().containsAll(List.of("ovest","est","nord","sud")));
 		Map<String,Stanza> mapAdiacenti = new HashMap<>();
 		mapAdiacenti.put("nord",new Stanza("corridoio bloccato"));
 		mapAdiacenti.put("sud",new Stanza(nomeStanzaIniziale));

@@ -1,6 +1,7 @@
 package it.uniroma3.diadia.ambienti;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -151,9 +152,24 @@ public class Stanza {
 	public boolean removeAttrezzo(Attrezzo attrezzo) {	
 		return this.nome2attrezzi.remove(attrezzo.getNome(), attrezzo);
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Stanza that = (Stanza) o;
+		return this.nome.equals(that.getNome());
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.nome.hashCode();
+	}
 
-	public Set<Direzione> getDirezioni() {
-		return direzione2stanza.keySet();
+	public List<String> getDirezioni() {
+		return direzione2stanza
+				.keySet()
+				.stream()
+				.map(Direzione::toString)
+				.collect(Collectors.toList());
 	}
 
 	public Map<String, Stanza> getMapStanzeAdiacenti() {
