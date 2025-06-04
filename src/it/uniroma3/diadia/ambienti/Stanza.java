@@ -41,8 +41,12 @@ public class Stanza {
 	 *                  parametro.
 	 */
 	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
-		Direzione d = Direzione.valueOf(direzione);
-		direzione2stanza.put(d, stanza);
+		try {
+			Direzione d = Direzione.valueOf(direzione);	
+			direzione2stanza.put(d, stanza);
+		} catch (IllegalArgumentException e) {
+			return;
+		}
 	}
 
 	/**
@@ -51,8 +55,12 @@ public class Stanza {
 	 * @param direzione
 	 */
 	public Stanza getStanzaAdiacente(String direzione) {
-		Direzione d = Direzione.valueOf(direzione);
-		return direzione2stanza.get(d);
+		try {
+			Direzione d = Direzione.valueOf(direzione);
+			return direzione2stanza.get(d);
+		} catch (IllegalArgumentException e) {
+			return null;
+		}
 	}
 
 	/**
@@ -78,8 +86,8 @@ public class Stanza {
 	 * 
 	 * @return la collezione di attrezzi nella stanza.
 	 */
-	public Collection<Attrezzo> getAttrezzi() {
-		return this.nome2attrezzi.values();
+	public List<Attrezzo> getAttrezzi() {
+		return List.copyOf(nome2attrezzi.values());
 	}
 
 	/**
@@ -144,16 +152,17 @@ public class Stanza {
 		return this.nome2attrezzi.remove(attrezzo.getNome(), attrezzo);
 	}
 
-	public String[] getDirezioni() {
-		// stabilire la dimensione dell'array così non è il massimo...
-		int size = direzione2stanza.size();
-		String[] direzioniString = new String[size];
-		
-		int i = 0;
-		for(Direzione d : direzione2stanza.keySet()) {
-			direzioniString[i++] = d.name();
-		}
-		return direzioniString;
+	public Set<Direzione> getDirezioni() {
+		return direzione2stanza.keySet();
+	}
+
+	public Map<String, Stanza> getMapStanzeAdiacenti() {
+		// soluzione brutta veloce
+		HashMap<String, Stanza> r = new HashMap<>();
+		direzione2stanza.forEach((d, s) -> {
+			r.put(d.toString(), s);
+		});
+		return r;
 	}
 
 }
