@@ -65,15 +65,25 @@ class TestComandoPrendi {
 
 	@Test
 	void TestPrendiOggBorsaPiena() {
-		Attrezzo dummy = new Attrezzo("dummy", 0);
-		// riempi la borsa del giocatore
-		while (p.getGiocatore().getBorsa().addAttrezzo(dummy))
-			;
-		p.getLabirinto().setStanzaCorrente(stanzaSingolo);
-		prendi.setParametro(attr);
+		
+		Stanza stanzaOggPesanti = new Stanza("stanza");
+		p.getLabirinto().setStanzaCorrente(stanzaOggPesanti);
+
+		int pMax = p.getGiocatore().getBorsa().getPesoMax();
+		Attrezzo pesante = new Attrezzo("pesante", pMax);
+		p.getLabirinto().getStanzaCorrente().addAttrezzo(pesante);
+		
+		prendi.setParametro(pesante.getNome());
 		prendi.esegui(p);
-		assertTrue(p.getLabirinto().getStanzaCorrente().hasAttrezzo(attr));
-		assertFalse(p.getGiocatore().getBorsa().hasAttrezzo(attr));
+		
+		Attrezzo attrezzo = new Attrezzo("attrezzo",1);
+		p.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzo);
+		
+		prendi.setParametro(attrezzo.getNome());
+		prendi.esegui(p);
+		
+		assertTrue(p.getLabirinto().getStanzaCorrente().hasAttrezzo(attrezzo.getNome()));
+		assertFalse(p.getGiocatore().getBorsa().hasAttrezzo(attrezzo.getNome()));
 	}
 
 }
