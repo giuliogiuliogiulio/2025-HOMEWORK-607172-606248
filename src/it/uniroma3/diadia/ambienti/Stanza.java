@@ -18,7 +18,7 @@ public class Stanza {
 
 	private String nome;
 
-	private Set<Attrezzo> attrezzi;
+	private Map<String, Attrezzo> nome2attrezzi;
 
 	private Map<Direzione, Stanza> direzione2stanza;
 
@@ -30,7 +30,7 @@ public class Stanza {
 	public Stanza(String nome) {
 		this.nome = nome;
 		this.direzione2stanza = new EnumMap<Direzione,Stanza>(Direzione.class);
-		this.attrezzi = new HashSet<Attrezzo>();
+		this.nome2attrezzi = new HashMap<String,Attrezzo>();
 	}
 
 	/**
@@ -78,9 +78,8 @@ public class Stanza {
 	 * 
 	 * @return la collezione di attrezzi nella stanza.
 	 */
-	public Attrezzo[] getAttrezzi() {
-		Attrezzo[] a = new Attrezzo[this.attrezzi.size()];
-		return this.attrezzi.toArray(a);
+	public Collection<Attrezzo> getAttrezzi() {
+		return this.nome2attrezzi.values();
 	}
 
 	/**
@@ -90,7 +89,10 @@ public class Stanza {
 	 * @return true se riesce ad aggiungere l'attrezzo, false atrimenti.
 	 */
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		return attrezzi.add(attrezzo);
+		if(nome2attrezzi.containsKey(attrezzo.getNome()))
+			return false;
+		nome2attrezzi.put(attrezzo.getNome(), attrezzo);
+		return true;
 	}
 
 	/**
@@ -107,7 +109,7 @@ public class Stanza {
 			risultato.append(" " + d);
 		}
 		risultato.append("\nAttrezzi nella stanza: ");
-		for (Attrezzo attrezzo : this.attrezzi) {
+		for (Attrezzo attrezzo : this.getAttrezzi()) {
 			risultato.append(attrezzo.toString() + " ");
 		}
 		return risultato.toString();
@@ -119,12 +121,7 @@ public class Stanza {
 	 * @return true se l'attrezzo esiste nella stanza, false altrimenti.
 	 */
 	public boolean hasAttrezzo(String nomeAttrezzo) {
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				return true;
-		}
-		
-		return false;
+		return this.nome2attrezzi.containsKey(nomeAttrezzo);
 	}
 
 	/**
@@ -134,12 +131,7 @@ public class Stanza {
 	 * @return l'attrezzo presente nella stanza. null se l'attrezzo non e' presente.
 	 */
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
-		Attrezzo attrezzoCercato = null;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				attrezzoCercato = attrezzo;
-		}
-		return attrezzoCercato;
+		return this.nome2attrezzi.get(nomeAttrezzo);
 	}
 
 	/**
@@ -148,8 +140,8 @@ public class Stanza {
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	public boolean removeAttrezzo(Attrezzo attrezzo) {		
-		return attrezzi.remove(attrezzo);
+	public boolean removeAttrezzo(Attrezzo attrezzo) {	
+		return this.nome2attrezzi.remove(attrezzo.getNome(), attrezzo);
 	}
 
 	public String[] getDirezioni() {
