@@ -86,7 +86,7 @@
       devShells.${system} = rec {
         diadia = self.outputs.packages.${system}.diadia;
         java-env = pkgs.mkShell {
-          build-inputs = with pkgs; [
+          packages = with pkgs; [
             eclipses.eclipse-java
             my_jdk
           ];
