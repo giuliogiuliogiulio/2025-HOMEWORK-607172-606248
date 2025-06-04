@@ -100,4 +100,15 @@ public class LabirintoBuilder {
 		return this;
 	}
 	
-}
+	public LabirintoBuilder addAttrezzoToStanza(String nomeStanza, Attrezzo a) {
+		this.graph.get(nomeStanza).addAttrezzo(a);
+		return this;
+	}
+	
+	//non chained methods:
+	
+	public boolean isStanzaPresente(String nomeStanza) {
+		return graph.containsKey(nomeStanza);
+	}
+
+} 

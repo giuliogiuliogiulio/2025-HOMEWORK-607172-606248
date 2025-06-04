@@ -64,4 +64,8 @@ public class Partita {
 		return this.lab;
 	}
 
+	public Stanza getStanzaCorrente() {
+		return this.lab.getStanzaCorrente();
+	}
+
 }
