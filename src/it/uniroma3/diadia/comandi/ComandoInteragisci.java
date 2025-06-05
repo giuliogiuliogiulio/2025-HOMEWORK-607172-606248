@@ -4,23 +4,24 @@ import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 
-public class ComandoSaluta extends AbstractComando {
-	
-	private IO io;
+public class ComandoInteragisci extends AbstractComando {
 
+	private IO io;
+	
 	@Override
 	public void esegui(Partita partita) {
 		Stanza curr = partita.getStanzaCorrente();
 		if (curr.hasPersonaggio()) {
-			io.mostraMessaggio(curr.getPersonaggio().saluta());
+			io.mostraMessaggio(curr.getPersonaggio().agisci(partita));
 		} else {
-			io.mostraMessaggio("non c'è nessuno da salutare qui...");
+			io.mostraMessaggio("non c'è nessuno con cui interagire qui...");
 		}
+		
 	}
 
 	@Override
 	public String getNome() {
-		return "saluta";
+		return "interagisci";
 	}
 
 	@Override

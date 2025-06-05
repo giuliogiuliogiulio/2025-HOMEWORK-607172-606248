@@ -39,9 +39,9 @@ public abstract class AbstractPersonaggio {
 		this.haSalutato = true;
 		return risposta.toString();
 	}
-	
+
 	abstract public String agisci(Partita partita);
-	
+
 	@Override
 	public String toString() {
 		return this.getNome();

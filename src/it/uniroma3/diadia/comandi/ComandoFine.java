@@ -18,12 +18,6 @@ public class ComandoFine extends AbstractComando implements Comando {
 		// TODO Auto-generated method stub
 		return "fine";
 	}
-
-	@Override
-	public String getParametro() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public void setIO(IO io) { this.io = io; }

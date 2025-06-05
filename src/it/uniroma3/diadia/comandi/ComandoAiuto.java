@@ -13,11 +13,6 @@ public class ComandoAiuto extends AbstractComando implements Comando {
 	}
 
 	@Override
-	public String getParametro() {
-		return null;
-	}
-
-	@Override
 	public String getNome() {
 		return "aiuto";
 	}
