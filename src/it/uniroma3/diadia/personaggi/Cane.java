@@ -10,7 +10,7 @@ public class Cane extends AbstractPersonaggio {
 	
 	Attrezzo regalo;
 	
-	public Cane(String nome, String presentazione, String ciboPreferito) {
+	public Cane(String nome, String presentazione) {
 		super(nome, presentazione);
 		this.ciboPreferito = ciboPreferito;
 		this.regalo = null;

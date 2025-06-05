@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 
 public class LabirintoBuilder {
 	
@@ -102,6 +103,11 @@ public class LabirintoBuilder {
 	
 	public LabirintoBuilder addAttrezzoToStanza(String nomeStanza, Attrezzo a) {
 		this.graph.get(nomeStanza).addAttrezzo(a);
+		return this;
+	}
+	
+	public LabirintoBuilder addPersonaggioToStanza(String nomeStanza, AbstractPersonaggio p) {
+		this.graph.get(nomeStanza).setPersonaggio(p);
 		return this;
 	}
 	

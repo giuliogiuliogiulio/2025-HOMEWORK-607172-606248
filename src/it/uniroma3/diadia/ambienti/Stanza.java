@@ -194,5 +194,11 @@ public class Stanza {
 	public AbstractPersonaggio getPersonaggio() {
 		return p;
 	}
+	
+	// i personaggi sono uno per stanza e non si spostano
+	public void setPersonaggio(AbstractPersonaggio p) {
+		if (p == null)
+			this.p = p;	
+	}
 
 }
