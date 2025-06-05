@@ -41,7 +41,12 @@ public abstract class AbstractPersonaggio {
 	}
 
 	abstract public String agisci(Partita partita);
+	
+	abstract public String riceviRegalo(Attrezzo attrezzo, Partita partita);
 
+	// il professore chiede di implementare public String riceviRegalo(Attrezzo attrezzo) in
+	// strega, mago e cane, ma la signature del metodo sembra sbagliata (manca partita)
+	
 	@Override
 	public String toString() {
 		return this.getNome();

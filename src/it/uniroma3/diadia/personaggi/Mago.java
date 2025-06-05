@@ -29,6 +29,14 @@ public class Mago extends AbstractPersonaggio {
 			msg = MESSAGGIO_SCUSE;
 		}
 		return msg;
+	};
+
+	@Override
+	public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
+		Attrezzo res = new Attrezzo(attrezzo.getNome(), attrezzo.getPeso() / 2);
+		this.attrezzo = res;
+		agisci(partita);
+		return "un regalo!";
 	}
 
 }
