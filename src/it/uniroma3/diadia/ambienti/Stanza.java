@@ -88,7 +88,9 @@ public class Stanza {
 	 * @return la collezione di attrezzi nella stanza.
 	 */
 	public List<Attrezzo> getAttrezzi() {
-		return List.copyOf(nome2attrezzi.values());
+		ArrayList<Attrezzo> res = new ArrayList<>();
+		res.addAll(nome2attrezzi.values());
+		return res;
 	}
 
 	/**

@@ -57,7 +57,8 @@ public class Borsa {
 	}
 	
 	public List<Attrezzo> getContenutoOrdinatoPerPeso() {
-		List<Attrezzo> attrezzi = List.copyOf(nome2attrezzi.values());
+		ArrayList<Attrezzo> attrezzi = new ArrayList<>(nome2attrezzi.size());
+		attrezzi.addAll(nome2attrezzi.values());
 		attrezzi.sort(new Comparator<Attrezzo>() {
 			@Override
 			public int compare(Attrezzo a1, Attrezzo a2) {

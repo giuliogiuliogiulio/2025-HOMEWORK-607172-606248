@@ -2,6 +2,7 @@ package it.uniroma3.diadia.ambienti;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -319,7 +320,7 @@ public class LabirintoBuilderTest {
 		assertEquals(nomeStanzaVincente, labirintoCompleto.getStanzaVincente().getNome());
 		Stanza corridoio = labirintoCompleto.getStanzaIniziale().getStanzaAdiacente("nord");
 		assertEquals("corridoio",corridoio.getNome());
-		assertTrue(corridoio.getDirezioni().containsAll(List.of("ovest","est","nord","sud")));
+		assertTrue(corridoio.getDirezioni().containsAll(Arrays.asList("ovest","est","nord","sud")));
 		Map<String,Stanza> mapAdiacenti = new HashMap<>();
 		mapAdiacenti.put("nord",new Stanza("corridoio bloccato"));
 		mapAdiacenti.put("sud",new Stanza(nomeStanzaIniziale));

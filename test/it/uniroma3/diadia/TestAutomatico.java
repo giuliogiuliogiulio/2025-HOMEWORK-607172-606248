@@ -2,8 +2,9 @@ package it.uniroma3.diadia;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ class TestAutomatico {
 
 	@Test
 	void testVittoriaImmediata() {
-		String[] istruzioni = { "vai nord" };
+		List<String> istruzioni = Collections.singletonList("vai nord");
 		simulatore.setIstruzioni(istruzioni);
 		gioco.gioca();
 		List<String> result = simulatore.getMessaggi();
