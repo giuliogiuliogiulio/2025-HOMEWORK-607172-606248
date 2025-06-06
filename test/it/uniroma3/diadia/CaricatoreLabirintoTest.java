@@ -15,14 +15,14 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class CaricatoreLabirintoTest {
 
 	private final String monolocale = 
-			"Stanze: biblioteca\n"+
+			"Stanze: aula\n"+
 			"Magiche: \n"+
 			"Buie: \n"+
 			"Bloccate: \n" +
-			"Inizio: biblioteca\n"+
-			"Vincente: biblioteca\n"+
+			"Inizio: aula\n"+
+			"Vincente: aula\n"+
 			"Maghi: \n"+
-			"Cani: \n"+
+			"Cani: cane wolf aula\n"+
 			"Streghe: \n"+
 			"Attrezzi: \n"+
 			"Uscite: \n";
@@ -54,8 +54,8 @@ public class CaricatoreLabirintoTest {
 	public void testMonolocale() throws FormatoFileNonValidoException, FileNotFoundException {
 		cl = new CaricatoreLabirinto(monolocale);
 		cl.carica();
-		assertEquals("biblioteca", this.cl.getStanzaIniziale().getNome());
-		assertEquals("biblioteca", this.cl.getStanzaVincente().getNome());
+		assertEquals("aula", this.cl.getStanzaIniziale().getNome());
+		assertEquals("aula", this.cl.getStanzaVincente().getNome());
 		}
 	
 	@Test
