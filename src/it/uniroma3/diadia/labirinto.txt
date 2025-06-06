@@ -1,0 +1,11 @@
+Stanze: atrio, aulaN11, aulaN10, laboratorio, biblioteca
+Magiche: 
+Buie: 
+Bloccate: 
+Inizio: atrio
+Vincente: biblioteca
+Maghi: 
+Cani: 
+Streghe: 
+Attrezzi: lanterna 3 aulaN10, osso 1 atrio
+Uscite: atrio nord biblioteca, atrio est aulaN11, atrio sud aulaN10, atrio ovest laboratorio, aulaN11 est laboratorio, aulaN11 ovest atrio, aulaN10 nord atrio, aulaN10 est aulaN11, aulaN10 ovest laboratorio, laboratorio est atrio, laboratorio ovest aulaN11, biblioteca sud atrio

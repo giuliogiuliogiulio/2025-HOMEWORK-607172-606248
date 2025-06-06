@@ -3,8 +3,6 @@ package it.uniroma3.diadia;
 import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
-import java.io.StringReader;
-import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
@@ -38,7 +36,7 @@ public class CaricatoreLabirintoTest {
 			"Cani: \n"+
 			"Streghe: \n"+
 			"Attrezzi: martello 3 N12\n"+
-			"Uscite: \n";
+			"Uscite: N12 nord N11";
 	
 	private CaricatoreLabirinto cl;
 	
