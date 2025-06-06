@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 
 class TestAutomatico {
 
@@ -19,7 +19,7 @@ class TestAutomatico {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		LabirintoBuilder builder = new LabirintoBuilder();
+		LabirintoBuilder builder = Labirinto.newBuilder();
 		builder
 		.addStanza("atrio")
 		.addStanza("biblioteca")

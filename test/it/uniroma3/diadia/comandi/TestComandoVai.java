@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 
 class TestComandoVai {
@@ -19,12 +21,15 @@ class TestComandoVai {
 	void setUp() throws Exception {
 		vai = new ComandoVai();
 		vai.setIO(new IOConsole());
-		Stanza centro = new Stanza("semplice");
-		centro.impostaStanzaAdiacente("nord", new Stanza("nord"));
-		centro.impostaStanzaAdiacente("loop", centro);
 
-		p = new Partita();
-		p.getLabirinto().setStanzaCorrente(centro);
+		LabirintoBuilder b = Labirinto.newBuilder();
+		b.addStanza("semplice")
+		.addStanza("nord")
+		.addAdiacenza("semplice", "nord", "nord")
+		.addAdiacenza("semplice", "semplice", "sud")
+		.addStanzaIniziale("semplice")
+		.addStanzaVincente("sud");
+		p = new Partita(b.getLabirinto());
 	}
 
 	@Test
@@ -47,7 +52,7 @@ class TestComandoVai {
 	@Test
 	void testLoop() {
 		Stanza curr = p.getLabirinto().getStanzaCorrente();
-		vai.setParametro("loop");
+		vai.setParametro("sud");
 		vai.esegui(p);
 		assertEquals(curr, p.getLabirinto().getStanzaCorrente());
 	}

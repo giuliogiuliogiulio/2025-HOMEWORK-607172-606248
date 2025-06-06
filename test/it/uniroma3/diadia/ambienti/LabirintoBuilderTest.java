@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 
 public class LabirintoBuilderTest {
 	private LabirintoBuilder labirintoBuilder;
@@ -21,7 +22,7 @@ public class LabirintoBuilderTest {
 
 	@Before
 	public void setUp() throws Exception {
-		labirintoBuilder = new LabirintoBuilder();
+		labirintoBuilder = Labirinto.newBuilder();
 	}
 
 	@Test

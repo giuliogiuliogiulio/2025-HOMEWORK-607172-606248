@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import it.uniroma3.diadia.ambienti.*;
+import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 
 class TestComandoPosa {
 
@@ -17,7 +18,9 @@ class TestComandoPosa {
 
 	@BeforeEach
 	public void setUp() {
-		partita = new Partita();
+		LabirintoBuilder b = Labirinto.newBuilder();
+		b.addStanza("stanza");
+		partita = new Partita(b.getLabirinto());
 		attrezzo = new Attrezzo("lanterna", 0);
 		stanzaVuota = new Stanza("vuota");
 

@@ -13,7 +13,7 @@ class TestPartita {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		this.testPartita = new Partita();
+		this.testPartita = new Partita(null);
 	}
 
 	@Test

@@ -1,58 +1,24 @@
 package it.uniroma3.diadia.ambienti;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 
 public class Labirinto {
 	private Stanza stanzaCorrente, stanzaVincente, stanzaIniziale;
-	
-	public Labirinto() {}
-	
+
 	Labirinto(Stanza iniziale, Stanza vincente) {
 		this.stanzaVincente = vincente;
 		this.stanzaIniziale = iniziale;
 		this.stanzaCorrente = this.stanzaIniziale;
 	}
 
-	public void creaStanze() {
-
-		/* crea gli attrezzi */
-		Attrezzo lanterna = new Attrezzo("lanterna", 3);
-		Attrezzo osso = new Attrezzo("osso", 1);
-
-		/* crea stanze del labirinto */
-		Stanza atrio = new Stanza("Atrio");
-		Stanza aulaN11 = new Stanza("Aula N11");
-		Stanza aulaN10 = new Stanza("Aula N10");
-		Stanza laboratorio = new Stanza("Laboratorio Campus");
-		Stanza biblioteca = new Stanza("Biblioteca");
-
-		/* collega le stanze */
-		atrio.impostaStanzaAdiacente("nord", biblioteca);
-		atrio.impostaStanzaAdiacente("est", aulaN11);
-		atrio.impostaStanzaAdiacente("sud", aulaN10);
-		atrio.impostaStanzaAdiacente("ovest", laboratorio);
-		aulaN11.impostaStanzaAdiacente("est", laboratorio);
-		aulaN11.impostaStanzaAdiacente("ovest", atrio);
-		aulaN10.impostaStanzaAdiacente("nord", atrio);
-		aulaN10.impostaStanzaAdiacente("est", aulaN11);
-		aulaN10.impostaStanzaAdiacente("ovest", laboratorio);
-		laboratorio.impostaStanzaAdiacente("est", atrio);
-		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
-		biblioteca.impostaStanzaAdiacente("sud", atrio);
-
-		/* pone gli attrezzi nelle stanze */
-		aulaN10.addAttrezzo(lanterna);
-		atrio.addAttrezzo(osso);
-
-		// il gioco comincia nell'atrio
-		stanzaCorrente = atrio;
-		stanzaVincente = biblioteca;
-	}
-
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
 	}
-	
+
 	public Stanza getStanzaIniziale() {
 		return stanzaIniziale;
 	}
@@ -64,4 +30,119 @@ public class Labirinto {
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
+
+	public static LabirintoBuilder newBuilder() {
+		return new LabirintoBuilder();
+	}
+
+	public static class LabirintoBuilder {
+
+		private Map<String, Stanza> graph;
+
+		Stanza ultimaStanzaAggiunta, vincente, iniziale;
+
+		public LabirintoBuilder() {
+			this.graph = new HashMap<>();
+		}
+
+		public LabirintoBuilder addStanza(Stanza s) {
+			this.graph.put(s.getNome(), s);
+			this.ultimaStanzaAggiunta = s;
+			return this;
+		}
+
+		public LabirintoBuilder addStanza(String nomeStanza) {
+			return addStanza(new Stanza(nomeStanza));
+		}
+
+		public LabirintoBuilder addStanzaIniziale(String nomeStanza) {
+			if (! this.graph.containsKey(nomeStanza)) {
+				Stanza s = new Stanza(nomeStanza);
+				addStanza(s);	
+				this.iniziale = s;
+			} else {
+				this.iniziale = graph.get(nomeStanza);
+			}
+
+			return this;
+		}
+
+		// se nomeStanza è già presente nel labirinto viene impostata come vincente.
+		// se nomeStanza non è presente nel labirinto, una nuova stanza nomeStanza
+		// viene aggiunta al labirinto e impostata come vincente
+		public LabirintoBuilder addStanzaVincente(String nomeStanza) {
+			if (! this.graph.containsKey(nomeStanza)) {
+				Stanza s = new Stanza(nomeStanza);
+				addStanza(s);	
+				this.vincente = s;
+			} else {
+				this.vincente = graph.get(nomeStanza);
+			}
+
+			return this;
+		}
+
+		public LabirintoBuilder addAttrezzo(Attrezzo attrezzo) {
+			this.ultimaStanzaAggiunta.addAttrezzo(attrezzo);
+			return this;
+		}
+
+		// Overload
+		public LabirintoBuilder addAttrezzo(String nomeAttrezzo, int peso) {
+			Attrezzo a = new Attrezzo(nomeAttrezzo, peso);
+			return this.addAttrezzo(a);
+		}
+
+		// addAdiacenza non aggiunge nuove stanze, quello è il compito di addStanza
+		// addAdiacenze le solo connette
+		public LabirintoBuilder addAdiacenza(String from, String to, String direzione) {
+			Stanza source = this.graph.get(from);
+			Stanza target = this.graph.get(to);
+			source.impostaStanzaAdiacente(direzione, target);
+			return this;
+		}
+
+		public Labirinto getLabirinto() {
+			return new Labirinto(iniziale, vincente);
+		}
+
+		public LabirintoBuilder addStanzaBloccata(String nomeStanza, String chiave, String direzioneChiave) {
+			Stanza bl = new StanzaBloccata(nomeStanza, chiave, direzioneChiave);
+			addStanza(bl);
+			return this;
+		}
+
+		public Map<String, Stanza> getListaStanze() {
+			return this.graph;
+		}
+
+		public LabirintoBuilder addStanzaMagica(String nomeStanzaMagica, int sogliaMagica) {
+			Stanza m = new StanzaMagica(nomeStanzaMagica, sogliaMagica);
+			addStanza(m);
+			return this;
+		}
+
+		public LabirintoBuilder addStanzaBuia(String nomeStanza, String attrezzo) {
+			Stanza bu = new StanzaBuia(nomeStanza, attrezzo);
+			addStanza(bu);
+			return this;
+		}
+
+		public LabirintoBuilder addAttrezzoToStanza(String nomeStanza, Attrezzo a) {
+			this.graph.get(nomeStanza).addAttrezzo(a);
+			return this;
+		}
+
+		public LabirintoBuilder addPersonaggioToStanza(String nomeStanza, AbstractPersonaggio p) {
+			this.graph.get(nomeStanza).setPersonaggio(p);
+			return this;
+		}
+
+		//non chained methods:
+
+		public boolean isStanzaPresente(String nomeStanza) {
+			return graph.containsKey(nomeStanza);
+		}
+
+	} 
 }
