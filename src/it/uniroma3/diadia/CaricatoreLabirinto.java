@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.ambienti.StanzaBloccata;
 import it.uniroma3.diadia.ambienti.StanzaBuia;
@@ -65,7 +65,7 @@ public class CaricatoreLabirinto {
 
 	public CaricatoreLabirinto(String contenuti) {
 		this.reader = new LineNumberReader(new StringReader(contenuti));
-		this.builder = new LabirintoBuilder();
+		this.builder = Labirinto.newBuilder();
 	}
 
 	public void carica() throws FormatoFileNonValidoException {

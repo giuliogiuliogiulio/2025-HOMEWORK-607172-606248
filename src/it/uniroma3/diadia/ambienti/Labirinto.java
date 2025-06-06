@@ -41,7 +41,7 @@ public class Labirinto {
 
 		Stanza ultimaStanzaAggiunta, vincente, iniziale;
 
-		public LabirintoBuilder() {
+		private LabirintoBuilder() {
 			this.graph = new HashMap<>();
 		}
 
