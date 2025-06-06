@@ -60,7 +60,7 @@ public class CaricatoreLabirinto {
 	
 	public CaricatoreLabirinto(FileReader file) {
 		this.reader = new LineNumberReader(file);
-		this.builder = new LabirintoBuilder();
+		this.builder = Labirinto.newBuilder();
 	}
 
 	public CaricatoreLabirinto(String contenuti) {
