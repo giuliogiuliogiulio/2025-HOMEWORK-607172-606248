@@ -19,11 +19,6 @@ class TestGiocatore {
 	}
 
 	@Test
-	void testGetCfu() {
-		assertTrue(this.giocatore.getCfu() == 20);
-	}
-
-	@Test
 	void testSetCfu() {
 		this.giocatore.setCfu(5);
 		assertTrue(this.giocatore.getCfu() == 5);

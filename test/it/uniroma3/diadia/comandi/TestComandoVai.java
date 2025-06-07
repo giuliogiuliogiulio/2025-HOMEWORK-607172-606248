@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
@@ -20,7 +19,7 @@ class TestComandoVai {
 	@BeforeEach
 	void setUp() throws Exception {
 		vai = new ComandoVai();
-		vai.setIO(new IOConsole());
+		vai.setIO(new DummyIO());
 
 		LabirintoBuilder b = Labirinto.newBuilder();
 		b.addStanza("semplice")

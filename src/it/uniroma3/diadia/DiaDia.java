@@ -1,9 +1,9 @@
 package it.uniroma3.diadia;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.comandi.*;
@@ -55,8 +55,10 @@ public class DiaDia {
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
-		FabbricaDiComandi factory = new FabbricaDiComandiRiflessiva(this.console);
-
+		//FabbricaDiComandi factory = new FabbricaDiComandiRiflessiva(this.console);
+		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica(this.console);
+		
+		
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta()) {
@@ -67,7 +69,8 @@ public class DiaDia {
 	}
 
 	public static void main(String[] argc) throws IOException {
-		IO io = new IOConsole();
+		try (Scanner s = new Scanner(System.in)) {
+		IO io = new IOConsole(s);
 		DiaDia gioco = null;
 		
 		try (InputStream input = DiaDia.class.getResourceAsStream("/labirinto.txt")) {
@@ -90,5 +93,6 @@ public class DiaDia {
 		}
 
 		gioco.gioca();
+		}
 	}
 }

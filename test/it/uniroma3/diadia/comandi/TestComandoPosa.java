@@ -30,7 +30,7 @@ class TestComandoPosa {
 			;
 
 		comandoPosa = new ComandoPosa();
-		comandoPosa.setIO(new IOConsole());
+		comandoPosa.setIO(new DummyIO());
 		partita.getLabirinto().setStanzaCorrente(stanzaVuota);
 	}
 

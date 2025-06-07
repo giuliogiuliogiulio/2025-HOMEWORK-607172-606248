@@ -7,15 +7,13 @@ import java.util.Scanner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.IOConsole;
-
 class TestFabbricaDiComandiFisarmonica {
 
 	FabbricaDiComandiFisarmonica f;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		f = new FabbricaDiComandiFisarmonica(new IOConsole());
+		f = new FabbricaDiComandiFisarmonica(new DummyIO());
 	}
 
 	@Test

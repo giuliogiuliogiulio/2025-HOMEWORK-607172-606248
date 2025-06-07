@@ -6,7 +6,6 @@ public class Giocatore {
 
 	private Borsa borsa;
 
-	static final private int CFU_INIZIALI = 20;
 	int cfu;
 
 	public Giocatore() {

@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
@@ -36,7 +35,7 @@ class TestComandoPrendi {
 		stanzaDue.addAttrezzo(new Attrezzo(attr2, 0));
 
 		prendi = new ComandoPrendi();
-		prendi.setIO(new IOConsole());
+		prendi.setIO(new DummyIO());
 		
 		LabirintoBuilder b = Labirinto.newBuilder();
 		b.addStanza("stanza");

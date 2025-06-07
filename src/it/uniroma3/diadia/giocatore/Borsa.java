@@ -6,7 +6,6 @@ import it.uniroma3.diadia.ConfigSingleton;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Borsa {
-	//public final static int DEFAULT_PESO_MAX_BORSA = 10;
 	private Map<String, Attrezzo> nome2attrezzi;
 	private int pesoMax;
 
@@ -16,7 +15,7 @@ public class Borsa {
 
 	public Borsa(int pesoMax) {
 		this.pesoMax = pesoMax;
-		this.nome2attrezzi = new HashMap<>(); // speriamo bastino...
+		this.nome2attrezzi = new HashMap<>(); 
 	}
 	
 
