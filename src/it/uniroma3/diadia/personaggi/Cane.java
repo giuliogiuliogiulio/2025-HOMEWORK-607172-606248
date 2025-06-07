@@ -5,11 +5,11 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
 public class Cane extends AbstractPersonaggio {
-	
+
 	private static final String ciboPreferito = "osso";
-	
+
 	Attrezzo regalo;
-	
+
 	public Cane(String nome, String presentazione) {
 		super(nome, presentazione);
 		this.regalo = null;

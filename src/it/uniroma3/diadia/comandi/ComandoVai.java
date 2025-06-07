@@ -46,7 +46,9 @@ public class ComandoVai implements Comando {
 	public String getParametro() {
 		return direzione;
 	}
-	
+
 	@Override
-	public void setIO(IO io) { this.io = io; }
+	public void setIO(IO io) {
+		this.io = io;
+	}
 }

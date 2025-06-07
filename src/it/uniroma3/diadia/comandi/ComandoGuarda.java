@@ -17,8 +17,10 @@ public class ComandoGuarda extends AbstractComando implements Comando {
 		// TODO Auto-generated method stub
 		return "guarda";
 	}
-	
+
 	@Override
-	public void setIO(IO io) { this.io = io; }
+	public void setIO(IO io) {
+		this.io = io;
+	}
 
 }

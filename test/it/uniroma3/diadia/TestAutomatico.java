@@ -20,12 +20,8 @@ class TestAutomatico {
 	@BeforeEach
 	void setUp() throws Exception {
 		LabirintoBuilder builder = Labirinto.newBuilder();
-		builder
-		.addStanza("atrio")
-		.addStanza("biblioteca")
-		.addAdiacenza("atrio", "biblioteca", "nord")
-		.addStanzaIniziale("atrio")
-		.addStanzaVincente("biblioteca");
+		builder.addStanza("atrio").addStanza("biblioteca").addAdiacenza("atrio", "biblioteca", "nord")
+				.addStanzaIniziale("atrio").addStanzaVincente("biblioteca");
 		simulatore = new IOSimulator();
 		gioco = new DiaDia(simulatore, builder.getLabirinto());
 	}

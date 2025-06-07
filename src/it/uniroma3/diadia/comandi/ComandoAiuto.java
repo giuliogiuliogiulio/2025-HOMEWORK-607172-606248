@@ -16,8 +16,10 @@ public class ComandoAiuto extends AbstractComando implements Comando {
 	public String getNome() {
 		return "aiuto";
 	}
-	
+
 	@Override
-	public void setIO(IO io) { this.io = io; }
+	public void setIO(IO io) {
+		this.io = io;
+	}
 
 }

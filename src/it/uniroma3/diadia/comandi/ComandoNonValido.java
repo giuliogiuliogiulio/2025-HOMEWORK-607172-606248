@@ -28,8 +28,10 @@ public class ComandoNonValido implements Comando {
 	public String getParametro() {
 		return parametro;
 	}
-	
+
 	@Override
-	public void setIO(IO io) { this.io = io; }
+	public void setIO(IO io) {
+		this.io = io;
+	}
 
 }

@@ -7,25 +7,25 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
 public class ComandoRegala implements Comando {
-	
+
 	private IO io;
-	
+
 	String parametro;
 
 	@Override
 	public void esegui(Partita partita) {
 		Stanza curr = partita.getStanzaCorrente();
-		
-		if (! curr.hasPersonaggio()) {
+
+		if (!curr.hasPersonaggio()) {
 			io.mostraMessaggio("non c'è nessuno a cui regalare nulla qui...");
 			return;
 		}
-		
+
 		Giocatore g = partita.getGiocatore();
 		if (g.getBorsa().hasAttrezzo(parametro)) {
 			Attrezzo a = g.getBorsa().getAttrezzo(parametro);
 			g.getBorsa().removeAttrezzo(parametro);
-			
+
 			curr.getPersonaggio().riceviRegalo(a, partita);
 		} else {
 			io.mostraMessaggio(parametro + "non è nella tua borsa");
@@ -49,7 +49,7 @@ public class ComandoRegala implements Comando {
 
 	@Override
 	public void setIO(IO io) {
-		this.io = io;	
+		this.io = io;
 	}
 
 }

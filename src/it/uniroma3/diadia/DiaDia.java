@@ -55,10 +55,9 @@ public class DiaDia {
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
-		//FabbricaDiComandi factory = new FabbricaDiComandiRiflessiva(this.console);
+		// FabbricaDiComandi factory = new FabbricaDiComandiRiflessiva(this.console);
 		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica(this.console);
-		
-		
+
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta()) {
@@ -70,29 +69,29 @@ public class DiaDia {
 
 	public static void main(String[] argc) throws IOException {
 		try (Scanner s = new Scanner(System.in)) {
-		IO io = new IOConsole(s);
-		DiaDia gioco = null;
-		
-		try (InputStream input = DiaDia.class.getResourceAsStream("/labirinto.txt")) {
-			
-			if (input == null) {
+			IO io = new IOConsole(s);
+			DiaDia gioco = null;
+
+			try (InputStream input = DiaDia.class.getResourceAsStream("/labirinto.txt")) {
+
+				if (input == null) {
+					io.mostraMessaggio("labirinto.txt non è stato trovato");
+					return;
+				}
+
+				CaricatoreLabirinto c = new CaricatoreLabirinto(input);
+				c.carica();
+				Labirinto lab = c.toLabirinto();
+				gioco = new DiaDia(io, lab);
+			} catch (FormatoFileNonValidoException e) {
+				io.mostraMessaggio(e.getMessage());
+				return;
+			} catch (FileNotFoundException e) {
 				io.mostraMessaggio("labirinto.txt non è stato trovato");
 				return;
 			}
-			
-			CaricatoreLabirinto c = new CaricatoreLabirinto(input);
-			c.carica();
-			Labirinto lab = c.toLabirinto();
-			gioco = new DiaDia(io, lab);
-		} catch (FormatoFileNonValidoException e) {
-			io.mostraMessaggio(e.getMessage());
-			return;
-		} catch (FileNotFoundException e) {
-			io.mostraMessaggio("labirinto.txt non è stato trovato");
-			return;
-		}
 
-		gioco.gioca();
+			gioco.gioca();
 		}
 	}
 }

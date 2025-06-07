@@ -18,10 +18,10 @@ public class Partita {
 
 	private Giocatore giocatore;
 	private Labirinto lab;
-	
+
 	public Partita(Labirinto lab) {
 		this.lab = lab;
-		
+
 		this.finita = false;
 		this.giocatore = new Giocatore();
 	}
@@ -63,7 +63,7 @@ public class Partita {
 	public Labirinto getLabirinto() {
 		return this.lab;
 	}
-	
+
 	public void setLabirinto(Labirinto lab) {
 		this.lab = lab;
 	}

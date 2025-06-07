@@ -8,10 +8,9 @@ public class StanzaProtected {
 
 	protected String nome;
 
-	protected Map<String,Attrezzo> nome2attrezzi;
+	protected Map<String, Attrezzo> nome2attrezzi;
 
 	protected Map<Direzione, Stanza> direzione2stanza;
-
 
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -20,8 +19,8 @@ public class StanzaProtected {
 	 */
 	public StanzaProtected(String nome) {
 		this.nome = nome;
-		this.direzione2stanza = new EnumMap<Direzione,Stanza>(Direzione.class);
-		this.nome2attrezzi = new HashMap<String,Attrezzo>();
+		this.direzione2stanza = new EnumMap<Direzione, Stanza>(Direzione.class);
+		this.nome2attrezzi = new HashMap<String, Attrezzo>();
 	}
 
 	/**
@@ -80,7 +79,7 @@ public class StanzaProtected {
 	 * @return true se riesce ad aggiungere l'attrezzo, false atrimenti.
 	 */
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if(nome2attrezzi.containsKey(attrezzo.getNome()))
+		if (nome2attrezzi.containsKey(attrezzo.getNome()))
 			return false;
 		nome2attrezzi.put(attrezzo.getNome(), attrezzo);
 		return true;
@@ -131,7 +130,7 @@ public class StanzaProtected {
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	public boolean removeAttrezzo(Attrezzo attrezzo) {	
+	public boolean removeAttrezzo(Attrezzo attrezzo) {
 		return this.nome2attrezzi.remove(attrezzo.getNome(), attrezzo);
 	}
 
@@ -139,9 +138,9 @@ public class StanzaProtected {
 		// stabilire la dimensione dell'array così non è il massimo...
 		int size = direzione2stanza.size();
 		String[] direzioniString = new String[size];
-		
+
 		int i = 0;
-		for(Direzione d : direzione2stanza.keySet()) {
+		for (Direzione d : direzione2stanza.keySet()) {
 			direzioniString[i++] = d.name();
 		}
 		return direzioniString;

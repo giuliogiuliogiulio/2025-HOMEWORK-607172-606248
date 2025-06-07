@@ -7,7 +7,7 @@ import it.uniroma3.diadia.ambienti.Stanza;
 public class ComandoInteragisci extends AbstractComando {
 
 	private IO io;
-	
+
 	@Override
 	public void esegui(Partita partita) {
 		Stanza curr = partita.getStanzaCorrente();
@@ -16,7 +16,7 @@ public class ComandoInteragisci extends AbstractComando {
 		} else {
 			io.mostraMessaggio("non c'è nessuno con cui interagire qui...");
 		}
-		
+
 	}
 
 	@Override

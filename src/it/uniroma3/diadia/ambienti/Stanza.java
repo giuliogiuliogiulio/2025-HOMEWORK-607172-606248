@@ -19,7 +19,7 @@ import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 public class Stanza {
 
 	private String nome;
-	
+
 	private AbstractPersonaggio p;
 
 	private Map<String, Attrezzo> nome2attrezzi;
@@ -33,8 +33,8 @@ public class Stanza {
 	 */
 	public Stanza(String nome) {
 		this.nome = nome;
-		this.direzione2stanza = new EnumMap<Direzione,Stanza>(Direzione.class);
-		this.nome2attrezzi = new HashMap<String,Attrezzo>();
+		this.direzione2stanza = new EnumMap<Direzione, Stanza>(Direzione.class);
+		this.nome2attrezzi = new HashMap<String, Attrezzo>();
 		this.p = null;
 	}
 
@@ -47,7 +47,7 @@ public class Stanza {
 	 */
 	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
 		try {
-			Direzione d = Direzione.valueOf(direzione);	
+			Direzione d = Direzione.valueOf(direzione);
 			direzione2stanza.put(d, stanza);
 		} catch (IllegalArgumentException e) {
 			return;
@@ -104,7 +104,7 @@ public class Stanza {
 	 * @return true se riesce ad aggiungere l'attrezzo, false atrimenti.
 	 */
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if(nome2attrezzi.containsKey(attrezzo.getNome()))
+		if (nome2attrezzi.containsKey(attrezzo.getNome()))
 			return false;
 		nome2attrezzi.put(attrezzo.getNome(), attrezzo);
 		return true;
@@ -155,27 +155,23 @@ public class Stanza {
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	public boolean removeAttrezzo(Attrezzo attrezzo) {	
+	public boolean removeAttrezzo(Attrezzo attrezzo) {
 		return this.nome2attrezzi.remove(attrezzo.getNome(), attrezzo);
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		Stanza that = (Stanza) o;
 		return this.nome.equals(that.getNome());
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return this.nome.hashCode();
 	}
 
 	public List<String> getDirezioni() {
-		return direzione2stanza
-				.keySet()
-				.stream()
-				.map(Direzione::toString)
-				.collect(Collectors.toList());
+		return direzione2stanza.keySet().stream().map(Direzione::toString).collect(Collectors.toList());
 	}
 
 	public Map<String, Stanza> getMapStanzeAdiacenti() {
@@ -190,15 +186,15 @@ public class Stanza {
 	public boolean hasPersonaggio() {
 		return p != null;
 	}
-	
+
 	public AbstractPersonaggio getPersonaggio() {
 		return p;
 	}
-	
+
 	// i personaggi sono uno per stanza e non si spostano
 	public void setPersonaggio(AbstractPersonaggio p) {
 		if (p == null)
-			this.p = p;	
+			this.p = p;
 	}
 
 }

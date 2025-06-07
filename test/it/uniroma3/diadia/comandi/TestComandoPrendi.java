@@ -36,7 +36,7 @@ class TestComandoPrendi {
 
 		prendi = new ComandoPrendi();
 		prendi.setIO(new DummyIO());
-		
+
 		LabirintoBuilder b = Labirinto.newBuilder();
 		b.addStanza("stanza");
 		p = new Partita(b.getLabirinto());
@@ -70,23 +70,23 @@ class TestComandoPrendi {
 
 	@Test
 	void TestPrendiOggBorsaPiena() {
-		
+
 		Stanza stanzaOggPesanti = new Stanza("stanza");
 		p.getLabirinto().setStanzaCorrente(stanzaOggPesanti);
 
 		int pMax = p.getGiocatore().getBorsa().getPesoMax();
 		Attrezzo pesante = new Attrezzo("pesante", pMax);
 		p.getLabirinto().getStanzaCorrente().addAttrezzo(pesante);
-		
+
 		prendi.setParametro(pesante.getNome());
 		prendi.esegui(p);
-		
-		Attrezzo attrezzo = new Attrezzo("attrezzo",1);
+
+		Attrezzo attrezzo = new Attrezzo("attrezzo", 1);
 		p.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzo);
-		
+
 		prendi.setParametro(attrezzo.getNome());
 		prendi.esegui(p);
-		
+
 		assertTrue(p.getLabirinto().getStanzaCorrente().hasAttrezzo(attrezzo.getNome()));
 		assertFalse(p.getGiocatore().getBorsa().hasAttrezzo(attrezzo.getNome()));
 	}

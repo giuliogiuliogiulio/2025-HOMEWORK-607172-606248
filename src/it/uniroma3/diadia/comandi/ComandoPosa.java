@@ -50,8 +50,10 @@ public class ComandoPosa implements Comando {
 		// TODO Auto-generated method stub
 		return nomeAttrezzo;
 	}
-	
+
 	@Override
-	public void setIO(IO io) { this.io = io; }
+	public void setIO(IO io) {
+		this.io = io;
+	}
 
 }

@@ -12,9 +12,9 @@ import it.uniroma3.diadia.ambienti.Stanza;
 class TestPartita {
 
 	Partita testPartita;
-	
+
 	Labirinto lab;
-	
+
 	Stanza iniziale, vittoria;
 
 	@BeforeEach
@@ -22,11 +22,8 @@ class TestPartita {
 		iniziale = new Stanza("iniziale");
 		vittoria = new Stanza("vittoria");
 		LabirintoBuilder b = Labirinto.newBuilder();
-		lab = b.addStanza(iniziale)
-				.addStanza(vittoria)
-				.addStanzaIniziale(iniziale.getNome())
-				.addStanzaVincente(vittoria.getNome())
-				.getLabirinto();
+		lab = b.addStanza(iniziale).addStanza(vittoria).addStanzaIniziale(iniziale.getNome())
+				.addStanzaVincente(vittoria.getNome()).getLabirinto();
 		this.testPartita = new Partita(lab);
 	}
 
@@ -51,19 +48,19 @@ class TestPartita {
 		lab.setStanzaCorrente(lab.getStanzaVincente());
 		assertTrue(this.testPartita.vinta());
 	}
-	
-	@Test 
+
+	@Test
 	void testLabirinto() {
 		assertEquals(this.testPartita.getLabirinto(), this.lab);
 	}
-	
+
 	@Test
 	void testStanzaCorrente() {
 		Stanza s = new Stanza("s");
 		lab.setStanzaCorrente(s);
 		assertEquals(lab.getStanzaCorrente(), s);
 	}
-	
+
 	@Test
 	void setLabirinto() {
 		assertNotNull(this.testPartita.getLabirinto());

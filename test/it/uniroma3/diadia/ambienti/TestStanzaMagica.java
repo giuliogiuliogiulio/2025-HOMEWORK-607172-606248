@@ -8,31 +8,31 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TestStanzaMagica {
-	
+
 	StanzaMagica magica;
-	
+
 	int attrezziPosati;
-	
+
 	int soglia;
 
 	@BeforeEach
 	public void setUp() throws Exception {
 		magica = new StanzaMagica("magica", 0);
 	}
-	
+
 	@Test
 	void testIsMagica() {
 		assertTrue(magica.isMagica());
 	}
-	
+
 	@Test
 	void testModificaAttrezzo() {
 		StringBuilder invertito = new StringBuilder("attrezzo").reverse();
 		Attrezzo attrezzoInvertito = new Attrezzo(invertito.toString(), 0);
-		Attrezzo attrezzo = new Attrezzo("attrezzo",0);
+		Attrezzo attrezzo = new Attrezzo("attrezzo", 0);
 		assertEquals(attrezzoInvertito, magica.modificaAttrezzo(attrezzo));
 	}
-	
+
 	@Test
 	void testAddAttrezzo() {
 		Attrezzo attrezzo = new Attrezzo("attrezzo", 0);

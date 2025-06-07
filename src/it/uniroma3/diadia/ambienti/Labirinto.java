@@ -56,9 +56,9 @@ public class Labirinto {
 		}
 
 		public LabirintoBuilder addStanzaIniziale(String nomeStanza) {
-			if (! this.graph.containsKey(nomeStanza)) {
+			if (!this.graph.containsKey(nomeStanza)) {
 				Stanza s = new Stanza(nomeStanza);
-				addStanza(s);	
+				addStanza(s);
 				this.iniziale = s;
 			} else {
 				this.iniziale = graph.get(nomeStanza);
@@ -71,9 +71,9 @@ public class Labirinto {
 		// se nomeStanza non è presente nel labirinto, una nuova stanza nomeStanza
 		// viene aggiunta al labirinto e impostata come vincente
 		public LabirintoBuilder addStanzaVincente(String nomeStanza) {
-			if (! this.graph.containsKey(nomeStanza)) {
+			if (!this.graph.containsKey(nomeStanza)) {
 				Stanza s = new Stanza(nomeStanza);
-				addStanza(s);	
+				addStanza(s);
 				this.vincente = s;
 			} else {
 				this.vincente = graph.get(nomeStanza);
@@ -138,11 +138,11 @@ public class Labirinto {
 			return this;
 		}
 
-		//non chained methods:
+		// non chained methods:
 
 		public boolean isStanzaPresente(String nomeStanza) {
 			return graph.containsKey(nomeStanza);
 		}
 
-	} 
+	}
 }

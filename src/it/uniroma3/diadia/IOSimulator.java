@@ -16,7 +16,7 @@ public class IOSimulator implements IO {
 
 	private Map<String, String> istruzioni2log;
 
-	public IOSimulator() { 
+	public IOSimulator() {
 		istruzioni2log = new HashMap<>();
 		log = new LinkedList<String>();
 		istruzioni = new Stack<String>();
@@ -30,7 +30,7 @@ public class IOSimulator implements IO {
 		} else {
 			istruzioni2log.put(ultimaIstruzione, messaggio);
 		}
-		
+
 		log.add(messaggio);
 	}
 

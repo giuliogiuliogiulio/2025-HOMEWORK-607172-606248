@@ -53,16 +53,16 @@ public class Attrezzo {
 	public String toString() {
 		return this.getNome() + " (" + this.getPeso() + "kg)";
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		Attrezzo that = (Attrezzo) o;
-		if(this.nome.equals(that.getNome())){
+		if (this.nome.equals(that.getNome())) {
 			return this.peso == that.getPeso();
 		}
 		return false;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return this.nome.hashCode() + this.peso;

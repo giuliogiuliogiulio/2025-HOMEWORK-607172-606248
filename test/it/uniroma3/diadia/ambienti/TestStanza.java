@@ -42,7 +42,7 @@ class TestStanza {
 	void testAddAttrezzoNessunAttrezzo() {
 		assertEquals(null, this.stanza.getAttrezzo("attrezzo"));
 	}
-	
+
 	@Test
 	void testHasAttrezzo() {
 		Attrezzo attrezzo = new Attrezzo("attrezzo", 0);

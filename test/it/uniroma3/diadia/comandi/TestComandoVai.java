@@ -22,12 +22,8 @@ class TestComandoVai {
 		vai.setIO(new DummyIO());
 
 		LabirintoBuilder b = Labirinto.newBuilder();
-		b.addStanza("semplice")
-		.addStanza("nord")
-		.addAdiacenza("semplice", "nord", "nord")
-		.addAdiacenza("semplice", "semplice", "sud")
-		.addStanzaIniziale("semplice")
-		.addStanzaVincente("sud");
+		b.addStanza("semplice").addStanza("nord").addAdiacenza("semplice", "nord", "nord")
+				.addAdiacenza("semplice", "semplice", "sud").addStanzaIniziale("semplice").addStanzaVincente("sud");
 		p = new Partita(b.getLabirinto());
 	}
 

@@ -5,7 +5,7 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 
 public class ComandoSaluta extends AbstractComando {
-	
+
 	private IO io;
 
 	@Override

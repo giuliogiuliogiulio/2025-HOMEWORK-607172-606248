@@ -15,14 +15,13 @@ public class Borsa {
 
 	public Borsa(int pesoMax) {
 		this.pesoMax = pesoMax;
-		this.nome2attrezzi = new HashMap<>(); 
+		this.nome2attrezzi = new HashMap<>();
 	}
-	
 
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax())
 			return false;
-		if(nome2attrezzi.containsKey(attrezzo.getNome()))
+		if (nome2attrezzi.containsKey(attrezzo.getNome()))
 			return false;
 		nome2attrezzi.put(attrezzo.getNome(), attrezzo);
 		return true;
@@ -56,7 +55,7 @@ public class Borsa {
 	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
 		return nome2attrezzi.remove(nomeAttrezzo);
 	}
-	
+
 	public List<Attrezzo> getContenutoOrdinatoPerPeso() {
 		ArrayList<Attrezzo> attrezzi = new ArrayList<>(nome2attrezzi.size());
 		attrezzi.addAll(nome2attrezzi.values());
@@ -72,10 +71,10 @@ public class Borsa {
 				}
 			}
 		});
-		
+
 		return attrezzi;
 	}
-	
+
 	public SortedSet<Attrezzo> getContenutoOrdinatoPerNome() {
 		TreeSet<Attrezzo> res = new TreeSet<>(new Comparator<Attrezzo>() {
 			@Override
@@ -84,13 +83,13 @@ public class Borsa {
 			}
 		});
 		res.addAll(nome2attrezzi.values());
-		
+
 		return res;
 	}
-	
-	public Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso() {
+
+	public Map<Integer, Set<Attrezzo>> getContenutoRaggruppatoPerPeso() {
 		HashMap<Integer, Set<Attrezzo>> res = new HashMap<>();
-		
+
 		for (Attrezzo a : nome2attrezzi.values()) {
 			int peso = a.getPeso();
 			if (res.containsKey(peso)) {
@@ -101,10 +100,10 @@ public class Borsa {
 				res.put(peso, s);
 			}
 		}
-		
+
 		return res;
 	}
-	
+
 	public SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso() {
 		TreeSet<Attrezzo> res = new TreeSet<>(new Comparator<Attrezzo>() {
 			@Override
@@ -118,12 +117,12 @@ public class Borsa {
 				}
 			}
 		});
-		
+
 		if (res.addAll(nome2attrezzi.values())) {
 			return res;
 		} else {
 			return null;
-		}	
+		}
 	}
 
 	@Override
