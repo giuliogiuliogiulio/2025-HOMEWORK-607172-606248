@@ -38,6 +38,7 @@
           runHook preBuild
           shopt -s globstar
           mkdir -p $out/java_objects/
+          cp $src/resources/* $out/java_objects/
           javac -encoding utf-8 -d $out/java_objects/ -sourcepath $src/src $src/src/**/*.java
         '';
 
@@ -45,7 +46,7 @@
           shopt -s globstar
           mkdir -p $out/test
           javac -encoding utf-8 -d $out/test -cp "$out/java_objects/:$CLASSPATH" -sourcepath $src/test $src/test/**/*.java
-          java -cp "$out/java_objects/:$out/test/:$CLASSPATH" org.junit.platform.console.ConsoleLauncher --scan-classpath
+          java -cp "$out/java_objects/:$out/test/:$CLASSPATH:$src/resources" org.junit.platform.console.ConsoleLauncher --scan-classpath
           rm -rf $out/test
         '';
 
