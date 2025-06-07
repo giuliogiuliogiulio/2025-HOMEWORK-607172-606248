@@ -1,5 +1,7 @@
 package it.uniroma3.diadia.giocatore;
 
+import it.uniroma3.diadia.ConfigSingleton;
+
 public class Giocatore {
 
 	private Borsa borsa;
@@ -9,7 +11,7 @@ public class Giocatore {
 
 	public Giocatore() {
 		this.borsa = new Borsa();
-		this.cfu = CFU_INIZIALI;
+		this.cfu = ConfigSingleton.getCfuIniziali();
 	}
 
 	@Override

@@ -58,8 +58,8 @@ public class CaricatoreLabirinto {
 	
 	private LineNumberReader reader;
 	
-	public CaricatoreLabirinto(FileReader file) {
-		this.reader = new LineNumberReader(file);
+	public CaricatoreLabirinto(InputStream s) {
+		this.reader = new LineNumberReader(new InputStreamReader(s));
 		this.builder = Labirinto.newBuilder();
 	}
 

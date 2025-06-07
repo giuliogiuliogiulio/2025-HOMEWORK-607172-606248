@@ -3,6 +3,7 @@ package it.uniroma3.diadia;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.comandi.*;
@@ -69,8 +70,14 @@ public class DiaDia {
 		IO io = new IOConsole();
 		DiaDia gioco = null;
 		
-		try (FileReader r = new FileReader("./src/it/uniroma3/diadia/labirinto.txt")) {
-			CaricatoreLabirinto c = new CaricatoreLabirinto(r);
+		try (InputStream input = DiaDia.class.getResourceAsStream("/labirinto.txt")) {
+			
+			if (input == null) {
+				io.mostraMessaggio("labirinto.txt non è stato trovato");
+				return;
+			}
+			
+			CaricatoreLabirinto c = new CaricatoreLabirinto(input);
 			c.carica();
 			Labirinto lab = c.toLabirinto();
 			gioco = new DiaDia(io, lab);

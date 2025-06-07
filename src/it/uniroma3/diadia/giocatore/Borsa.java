@@ -1,15 +1,17 @@
 package it.uniroma3.diadia.giocatore;
 
 import java.util.*;
+
+import it.uniroma3.diadia.ConfigSingleton;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Borsa {
-	public final static int DEFAULT_PESO_MAX_BORSA = 10;
+	//public final static int DEFAULT_PESO_MAX_BORSA = 10;
 	private Map<String, Attrezzo> nome2attrezzi;
 	private int pesoMax;
 
 	public Borsa() {
-		this(DEFAULT_PESO_MAX_BORSA);
+		this(ConfigSingleton.getPesoMaxBorsa());
 	}
 
 	public Borsa(int pesoMax) {
